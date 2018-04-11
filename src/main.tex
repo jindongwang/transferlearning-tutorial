@@ -26,16 +26,16 @@
 \@addtoreset{equation}{section}
 \makeatother  % `@' is restored as "non-letter"
 \renewcommand\theequation{\oldstylenums{\thesection}%
-	.\oldstylenums{\arabic{equation}}}
+  .\oldstylenums{\arabic{equation}}}
 
 %-----------------------------------------BEGIN DOC----------------------------------------
 
 \begin{document}
 
 \newpagestyle{main}{            
-	\sethead{}{迁移学习简明手册}{}     %设置页眉
-	\setfoot{}{\thepage}{}      %设置页脚，可以在页脚添加 \thepage  显示页数
-	\headrule                                      % 添加页眉的下划线c
+  \sethead{}{迁移学习简明手册}{}     %设置页眉
+  \setfoot{}{\thepage}{}      %设置页脚，可以在页脚添加 \thepage  显示页数
+  \headrule                                      % 添加页眉的下划线c
 }
 \pagestyle{main}    %使用该style
 
@@ -47,11 +47,11 @@
 \makeatletter
 
 \renewcommand\tableofcontents{%
-	\begin{multicols}{2}[%
-		\section*{%
-			\contentsname
-			\@mkboth{\MakeUppercase\contentsname}{\MakeUppercase\contentsname}}]%
-		\@starttoc{toc}%
+  \begin{multicols}{2}[%
+    \section*{%
+      \contentsname
+      \@mkboth{\MakeUppercase\contentsname}{\MakeUppercase\contentsname}}]%
+    \@starttoc{toc}%
 \end{multicols}}
 \makeatother
 
@@ -59,7 +59,7 @@
 \title{{\Huge 迁移学习简明手册{\large\linebreak\\}}{\Large 一点心得体会\\版本号：v1.0\linebreak\linebreak
 }}
 \author{\\
-	王晋东\\中国科学院计算技术研究所}
+  王晋东\\中国科学院计算技术研究所}
 \date{2018年4月}
 \maketitle
 \thispagestyle{empty}
@@ -71,6 +71,7 @@
 \begin{center}
 {\Large\bf{摘\ 要\\}}
 \end{center}
+
 迁移学习作为机器学习的一大分支，已经取得了长足的进步。本手册简明地介绍迁移学习的概念与基本方法，并对其中的领域自适应问题中的若干代表性方法进行讲述。最后简要探讨迁移学习未来可能的方向。
 
 本手册编写的目的是帮助迁移学习领域的初学者快速入门并掌握基本方法，为自己的研究和应用工作打下良好基础。
@@ -98,20 +99,20 @@
 %------------------------------------------TEXT--------------------------------------------
 
 %----------------------------------------OVERVIEW-----------------------------------------
-\input{chaps/prefix}
-\input{chaps/introduction}
-\input{chaps/research_area}
-\input{chaps/application}
-\input{chaps/basic}
-\input{chaps/method}
-\input{chaps/distributionadapt}
-\input{chaps/featureselect}
-\input{chaps/subspacelearn}
-\input{chaps/deep}
-\input{chaps/practice}
-\input{chaps/future}
-\input{chaps/conclusion}
-\input{chaps/appendix}
+\input{chaps/ch0_prefix}
+\input{chaps/ch1_introduction}
+\input{chaps/ch2_research_area}
+\input{chaps/ch3_application}
+\input{chaps/ch4_basic}
+\input{chaps/ch5_method}
+\input{chaps/ch6_distributionadapt}
+\input{chaps/ch7_featureselect}
+\input{chaps/ch8_subspacelearn}
+\input{chaps/ch9_deep}
+\input{chaps/ch10_practice}
+\input{chaps/ch11_future}
+\input{chaps/ch12_conclusion}
+\input{chaps/ch13_appendix}
 
 %----------------------------------SYSTEM DESIGN------------------------------------------
 
@@ -124,4 +125,7 @@
 
 \end{document}
 
-
+%%% Local Variables:
+%%% mode: xelatex
+%%% TeX-master: t
+%%% End:
