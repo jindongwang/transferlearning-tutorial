@@ -56,6 +56,7 @@
 - 在[这个issue](https://github.com/jindongwang/transferlearning-tutorial/issues/1)下留言你的Github账号和邮箱，我将你添加到协作者中
 - 直接fork，然后将你的修改提交pull request
 - 如果不熟悉git，可直接下载本目录，然后将你修改的部分发给我(jindongwang@outlook.com)
+- 有任何问题，均可以提交issue
 
 然后在下面的贡献者信息中加入自己的信息。
 

@@ -292,6 +292,19 @@ DAN的作者、清华大学的龙明盛在2017年机器学习顶级会议ICML上
 	\label{fig-deep-jan}
 \end{figure}
 
+\textbf{5. AdaBN}
+
+与上述工作选择在已有网络层中增加适配层不同的是，北京大学的Haoyang Li和图森科技的Naiyan Wang等人提出了AdaBN(Adaptive Batch Normalization)~\cite{li2018adaptive}，通过在归一化层加入统计特征的适配，从而完成迁移。
+
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[scale=0.38]{./figures/fig-deep-adabn.pdf}
+	\caption{AdaBN方法示意图}
+	\label{fig-deep-adabn}
+\end{figure}
+
+AdaBN对比其他方法，实现相当简单。并且，方法本身不带有任何额外的参数。在许多公开数据集上都取得了很好的效果。
+
 \subsubsection{小结}
 
 基于深度网络进行迁移学习，其核心在于，找到网络需要进行自适应的层，并且对这些导加上自适应的损失度量。越来越多的研究者开始使用深度网络进行迁移学习~\cite{long2016deep,zhuo2017deep,zhuang2015supervised,sun2016deep,wei2016deep,luo2017label}。在这其中，几乎绝大多数方法都采用了卷积神经网络，在已训练好的模型(如AlexNet、Inception、GoogLeNet、Resnet等)上进行迁移。
