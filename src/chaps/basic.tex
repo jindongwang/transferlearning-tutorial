@@ -1,0 +1,301 @@
+\newpage
+\section{基础知识}
+
+本部分介绍迁移学习领域的一些基本知识。我们对迁移学习的问题进行简单的形式化，给出迁移学习的总体思路，并且介绍目前常用的一些度量准则。本部分中出现的所有符号和表示形式，是以后章节的基础。已有相关知识的读者可以直接跳过。
+
+\subsection{迁移学习的问题形式化}
+
+迁移学习的问题形式化，是进行一切研究的前提。在迁移学习中，有两个基本的概念：\textbf{领域(Domain)}和\textbf{任务(Task)}。它们是最基础的概念。定义如下：
+
+\subsubsection{领域}
+
+\textbf{领域(Domain):} 是进行学习的主体。领域主要由两部分构成：\textit{数据}和\textit{生成这些数据的概率分布}。通常我们用花体$\mathcal{D}$来表示一个domain，用大写斜体$P$来表示一个概率分布。
+
+特别地，因为涉及到迁移，所以对应于两个基本的领域：\textbf{源领域(Source Domain)}和\textbf{目标领域(Target Domain)}。这两个概念很好理解。源领域就是有知识、有大量数据标注的领域，是我们要迁移的对象；目标领域就是我们最终要赋予知识、赋予标注的对象。知识从源领域传递到目标领域，就完成了迁移。
+
+领域上的数据，我们通常用小写粗体$\mathbf{x}$来表示，它也是向量的表示形式。例如，$\mathbf{x}_i$就表示第$i$个样本或特征。用大写的黑体$\mathbf{X}$表示一个领域的数据，这是一种矩阵形式。我们用大写花体$\mathcal{X}$来表示数据的特征空间。
+
+通常我们用小写下标$s$和$t$来分别指代两个领域。结合领域的表示方式，则：$\mathcal{D}_s$表示源领域，$\mathcal{D}_t$表示目标领域。
+
+值得注意的是，概率分布$P$通常只是一个逻辑上的概念，即我们认为不同领域有不同的概率分布，却并给出（也难以给出）$P$的具体形式。
+
+\subsubsection{任务}
+
+\textbf{任务(Task):} 是学习的目标。任务主要由两部分组成：\textit{标签}和\textit{标签对应的函数}。通常我们用花体$\mathcal{Y}$来表示一个标签空间，用$f(\cdot)$来表示一个学习函数。
+
+相应地，源领域和目标领域的类别空间就可以分别表示为$\mathcal{Y}_s$和$\mathcal{Y}_t$。我们用小写$y_s$和$y_t$分别表示源领域和目标领域的实际类别。
+
+\subsubsection{迁移学习}
+
+有了上面领域和任务的定义，我们就可以对迁移学习进行形式化。
+
+\textbf{迁移学习(Transfer Learning):} 给定一个有标记的源域$\mathcal{D}_s=\{\mathbf{x}_{i},y_{i}\}^n_{i=1}$和一个无标记的目标域$\mathcal{D}_t=\{\mathbf{x}_{j}\}^{n+m}_{j=n+1}$。这两个领域的数据分布$P(\mathbf{x}_s)$和P($\mathbf{x}_t)$不同，即$P(\mathbf{x}_s) \ne P(\mathbf{x}_t)$。迁移学习的目的就是要借助$\mathcal{D}_s$的知识，来学习目标域$\mathcal{D}_t$的知识(标签)。
+
+更进一步，结合我们前面说过的迁移学习研究领域，迁移学习的定义需要进行如下的考虑：
+
+(1) 特征空间的异同，即$\mathcal{X}_s$和$\mathcal{X}_t$是否相等。
+
+(2) 类别空间的异同：即$\mathcal{Y}_s$和$\mathcal{Y}_t$是否相等。
+
+(3) 条件概率分布的异同：即$Q_s(y_s|\mathbf{x}_s)$和$Q_t(y_t|\mathbf{x}_t)$是否相等。
+
+结合上述形式化，我们给出\textbf{领域自适应(Domain Adaptation)}这一热门研究方向的定义：
+
+\textbf{领域自适应(Domain Adaptation):} 给定一个有标记的源域$\mathcal{D}_s=\{\mathbf{x}_{i},y_{i}\}^n_{i=1}$和一个无标记的目标域$\mathcal{D}_t=\{\mathbf{x}_{j}\}^{n+m}_{j=n+1}$，假定它们的特征空间相同，即$\mathcal{X}_s = \mathcal{X}_t$，并且它们的类别空间也相同，即$\mathcal{Y}_s = \mathcal{Y}_t$。但是这两个域的边缘分布不同，即$P_s(\mathbf{x}_s) \ne P_t(\mathbf{x}_t)$，条件概率分布也不同，即$Q_s(y_s|\mathbf{x}_s) \ne Q_t(y_t|\mathbf{x}_t)$。迁移学习的目标就是，利用有标记的数据$\mathcal{D}_s$去学习一个分类器$f:\mathbf{x}_t \mapsto \mathbf{y}_t$来预测目标域$\mathcal{D}_t$的标签$\mathbf{y}_t \in \mathcal{Y}_t$.
+
+在实际的研究和应用中，读者可以针对自己的不同任务，结合上述表述，灵活地给出相关的形式化定义。
+
+\textbf{符号小结}
+
+我们已经基本介绍了迁移学习中常用的符号。表~\ref{tb-symbol}是一个符号表：
+
+\begin{table}[htbp]
+	\centering
+	\caption{迁移学习形式化表示常用符号}
+	\label{tb-symbol}
+	\begin{tabular}{|c|c|}
+		\hline
+		\textbf{符号} & \textbf{含义} \\ \hline
+		下标$s$ / $t$ & 指示源域 / 目标域 \\ \hline
+		$\mathcal{D}_s$ / $\mathcal{D}_t$ & 源域数据 / 目标域数据 \\ \hline
+		$\mathbf{x}$ /  $\mathbf{X}$ / $\mathcal{X}$ & 向量 / 矩阵 / 特征空间 \\ \hline
+		$\mathbf{y}$ / $\mathcal{Y}$ & 类别向量 / 类别空间 \\ \hline
+		$(n,m)$ [或 $(n_1,n_2)$ 或 $(n_s,n_t)$] & (源域样本数,目标域样本数) \\ \hline
+		$P(\mathbf{x}_s)$ / $P(\mathbf{x}_t)$ & 源域数据 / 目标域数据的边缘分布 \\ \hline
+		$Q(\mathbf{y}_s | \mathbf{x}_s)$ / $Q(\mathbf{y}_t | \mathbf{x}_t)$ & 源域数据 / 目标域数据的条件分布 \\ \hline
+		$f(\cdot)$ & 要学习的目标函数 \\ \hline
+	\end{tabular}
+\end{table}
+
+\subsection{总体思路}
+
+形式化之后，我们可以进行迁移学习的研究。迁移学习的总体思路可以概括为：\textit{开发算法来最大限度地利用有标注的领域的知识，来辅助目标领域的知识获取和学习}。
+
+迁移学习的核心是，找到源领域和目标领域之间的\textbf{相似性}，并加以合理利用。这种相似性非常普遍。比如，不同人的身体构造是相似的；自行车和摩托车的骑行方式是相似的；国际象棋和中国象棋是相似的；羽毛球和网球的打球方式是相似的。这种相似性也可以理解为\textbf{不变量}。以不变应万变，才能立于不败之地。
+
+举一个杨强教授经常举的例子来说明：我们都知道在中国大陆开车时，驾驶员坐在左边，靠马路右侧行驶。这是基本的规则。然而，如果在英国、香港等地区开车，驾驶员是坐在右边，需要靠马路左侧行驶。那么，如果我们从中国大陆到了香港，应该如何快速地适应他们的开车方式呢？诀窍就是找到这里的不变量：\textit{不论在哪个地区，驾驶员都是紧靠马路中间。}这就是我们这个开车问题中的不变量。
+
+找到相似性(不变量)，是进行迁移学习的核心。
+
+有了这种相似性后，下一步工作就是，\textit{如何度量和利用这种相似性}。度量工作的目标有两点：一是很好地度量两个领域的相似性，不仅定性地告诉我们它们是否相似，更\textit{定量}地给出相似程度。二是以度量为准则，通过我们所要采用的学习手段，增大两个领域之间的相似性，从而完成迁移学习。
+
+\textbf{一句话总结：} \textit{相似性是核心，度量准则是重要手段}。
+
+\subsection{度量准则}
+
+度量不仅是机器学习和统计学等学科中使用的基础手段，也是迁移学习中的重要工具。它的核心就是衡量两个数据域的差异。计算两个向量（点、矩阵）的距离和相似度是许多机器学习算法的基础，有时候一个好的距离度量就能决定算法最后的结果好坏。比如KNN分类算法就对距离非常敏感。本质上就是找一个变换使得源域和目标域的距离最小（相似度最大）。所以，相似度和距离度量在机器学习中非常重要。
+
+这里给出常用的度量手段，它们都是迁移学习研究中非常常见的度量准则。对这些准则有很好的理解，可以帮助我们设计出更加好用的算法。用一个简单的式子来表示，度量就是描述源域和目标域这两个领域的距离：
+
+\begin{equation}
+	\label{eq-distance}
+	DISTANCE(\mathcal{D}_s,\mathcal{D}_t) = \mathrm{DistanceMeasure}(\cdot,\cdot)
+\end{equation}
+
+下面我们从距离和相似度度量准则几个方面进行简要介绍。
+
+\subsubsection{常见的几种距离}
+
+\textbf{1. 欧氏距离}
+
+定义在两个向量(两个点)上：点$\mathbf{x}$和点$\mathbf{y}$的欧氏距离为：
+
+\begin{equation}
+	\label{eq-dist-eculidean}
+	d_{Euclidean}=\sqrt{(\mathbf{x}-\mathbf{y})^\top (\mathbf{x}-\mathbf{y})}
+\end{equation}
+
+
+\textbf{2. 闵可夫斯基距离} 
+
+Minkowski distance， 两个向量（点）的$p$阶距离：
+
+\begin{equation}
+	\label{eq-dist-minkowski}
+	d_{Minkowski}=(|\mathbf{x}-\mathbf{y}|^p)^{1/p}
+\end{equation}
+
+当$p=1$时就是曼哈顿距离，当$p=2$时就是欧氏距离。
+
+\textbf{3. 马氏距离}
+
+定义在两个向量(两个点)上，这两个点在同一个分布里。点$\mathbf{x}$和点$\mathbf{y}$的马氏距离为：
+
+\begin{equation}
+	\label{eq-dist-maha}
+	d_{Mahalanobis}=\sqrt{(\mathbf{x}-\mathbf{y})^\top \Sigma^{-1} (\mathbf{x}-\mathbf{y})}
+\end{equation}
+
+其中，$\Sigma$是这个分布的协方差。
+
+当$\Sigma=\mathbf{I}$时，马氏距离退化为欧氏距离。
+
+\subsubsection{相似度}
+
+\textbf{1. 余弦相似度}
+
+衡量两个向量的相关性(夹角的余弦)。向量$\mathbf{x},\mathbf{y}$的余弦相似度为：
+
+\begin{equation}
+	\label{eq-dist-cosine}
+	\cos (\mathbf{x},\mathbf{y}) = \frac{\mathbf{x} \cdot \mathbf{y}}{|\mathbf{x}|\cdot |\mathbf{y}|}
+\end{equation}
+
+余弦相似度也被一些迁移学习研究所使用。比如发表在2009年UbiComp上的文章~\cite{zheng2009cross}。
+
+\textbf{2. 互信息}
+
+定义在两个概率分布$X,Y$上，$x \in X, y \in Y$。它们的互信息为：
+
+\begin{equation}
+	\label{eq-dist-info}
+	I(X;Y)=\sum_{x \in X} \sum_{y \in Y} p(x,y) \log \frac{p(x,y)}{p(x)p(y)}
+\end{equation}
+
+\textbf{3. 皮尔逊相关系数}
+
+衡量两个随机变量的相关性。随机变量$X,Y$的Pearson相关系数为：
+
+\begin{equation}
+	\label{eq-dist-pearson}
+	\rho_{X,Y}=\frac{Cov(X,Y)}{\sigma_X \sigma_Y}
+\end{equation}
+
+理解：协方差矩阵除以标准差之积。
+
+范围：$[-1,1]$，绝对值越大表示（正/负）相关性越大。
+
+\textbf{4. Jaccard相关系数}
+
+对两个集合$X,Y$，判断他们的相关性，借用集合的手段：
+
+\begin{equation}
+	\label{eq-dist-jaccard}
+	J=\frac{X \cap Y}{X \cup Y}
+\end{equation}
+
+理解：两个集合的交集除以并集。
+
+扩展：Jaccard距离=$1-J$。
+
+\subsubsection{KL散度与JS距离}
+
+KL散度和JS距离是迁移学习中被广泛应用的度量手段。
+
+\textbf{1. KL散度}
+
+Kullback–Leibler divergence，又叫做\textit{相对熵}，衡量两个概率分布$P(x),Q(x)$的距离：
+
+\begin{equation}
+	\label{eq-dist-kl}
+	D_{KL}(P||Q)=\sum_{i=1} P(x) \log \frac{P(x)}{Q(x)}
+\end{equation}
+
+这是一个非对称距离：$D_{KL}(P||Q) \ne D_{KL}(Q||P)$.
+
+\textbf{2. JS距离}
+
+Jensen–Shannon divergence，基于KL散度发展而来，是对称度量：
+
+\begin{equation}
+	\label{eq-dist-js}
+	JSD(P||Q)= \frac{1}{2} D_{KL}(P||M) + \frac{1}{2} D_{KL}(Q||M)
+\end{equation}
+
+其中$M=\frac{1}{2}(P+Q)$。
+
+\subsubsection{最大均值差异MMD}
+
+最大均值差异是迁移学习中使用频率最高的度量。Maximum mean discrepancy，它度量在再生希尔伯特空间中两个分布的距离，是一种核学习方法。两个随机变量的距离为
+
+\begin{equation}
+	\label{eq-dist-mmd}
+	MMD(X,Y)=\left \Vert \sum_{i=1}^{n_1}\phi(\mathbf{x}_i)- \sum_{j=1}^{n_2}\phi(\mathbf{y}_j) \right \Vert^2_\mathcal{H}
+\end{equation}
+
+其中$\phi(\cdot)$是映射，用于把原变量映射到\textit{再生核希尔伯特空间}(Reproducing Kernel Hilbert Space, RKHS)~\cite{borgwardt2006integrating}中。什么是RKHS？形式化定义太复杂，简单来说就是这个空间是对于函数的内积完备的。就是比欧几里得空间更高端的。
+
+理解：就是求两堆数据在RKHS中的\textit{均值}的距离。
+
+\textit{Multiple-kernel MMD}：多核的MMD，简称MK-MMD。现有的MMD方法是基于单一核变换的，多核的MMD假设最优的核可以由多个核线性组合得到。多核MMD的提出和计算方法在文献~\cite{gretton2012optimal}中形式化给出。MK-MMD在许多后来的方法中被大量使用，最著名的方法是DAN~\cite{long2015learning}。我们将在后续单独介绍此工作。
+
+\subsubsection{Principal Angle}
+
+也是将两个分布映射到高维空间(格拉斯曼流形)中，在流形中两堆数据就可以看成两个点。Principal angle是求这两堆数据的对应维度的夹角之和。
+
+对于两个矩阵$\mathbf{X},\mathbf{Y}$，计算方法：首先正交化(用PCA)两个矩阵，然后：
+
+\begin{equation}
+\label{eq-dist-pa}
+PA(\mathbf{X},\mathbf{Y})=\sum_{i=1}^{\min(m,n)} \sin \theta_i
+\end{equation}
+
+其中$m,n$分别是两个矩阵的维度，$\theta_i$是两个矩阵第$i$个维度的夹角，$\Theta=\{\theta_1,\theta_2,\cdots,\theta_t\}$是两个矩阵SVD后的角度：
+
+\begin{equation}
+	\mathbf{X}^\top\mathbf{Y}=\mathbf{U} (\cos \Theta) \mathbf{V}^\top
+\end{equation}
+
+\subsubsection{A-distance}
+
+$\mathcal{A}$-distance是一个很简单却很有用的度量。文献\cite{ben2007analysis}介绍了此距离，它可以用来估计不同分布之间的差异性。$\mathcal{A}$-distance被定义为建立一个线性分类器来区分两个数据领域的hinge损失(也就是进行二类分类的hinge损失)。它的计算方式是，我们首先在源域和目标域上训练一个二分类器$h$，使得这个分类器可以区分样本是来自于哪一个领域。我们用$err(h)$来表示分类器的损失，则$\mathcal{A}$-distance定义为：
+
+\begin{equation}
+	\label{eq-dist-adist}
+	\mathcal{A}(\mathcal{D}_s,\mathcal{D}_t) = 2(1 - 2 err(h))
+\end{equation}
+
+$\mathcal{A}$-distance通常被用来计算两个领域数据的相似性程度，以便与实验结果进行验证对比。
+
+\subsubsection{Hilbert-Schmidt Independence Criterion}
+
+希尔伯特-施密特独立性系数，Hilbert-Schmidt Independence Criterion，用来检验两组数据的独立性：
+\begin{equation}
+	HSIC(X,Y) = trace(HXHY)
+\end{equation}
+其中$X,Y$是两堆数据的kernel形式。
+
+\subsection{迁移学习的理论保证*}
+\textit{
+本部分的标题中带有*号，有一些难度，为可看可不看的内容。此部分最常见的形式是当自己提出的算法需要理论证明时，可以借鉴。}
+
+在第一章里我们介绍了两个重要的概念：迁移学习是什么，以及为什么需要迁移学习。但是，还有一个重要的问题没有得到解答：\textit{为什么可以进行迁移}?也就是说，迁移学习的可行性还没有探讨。
+
+值得注意的是，就目前的研究成果来说，迁移学习领域的理论工作非常匮乏。我们在这里仅回答一个问题：为什么数据分布不同的两个领域之间，知识可以进行迁移？或者说，到底达到什么样的误差范围，我们才认为知识可以进行迁移？
+
+加拿大滑铁卢大学的Ben-David等人从2007年开始，连续发表了三篇文章~\cite{ben2007analysis,blitzer2008learning,ben2010theory}对迁移学习的理论进行探讨。在文中，作者将此称之为“Learning from different domains”。在三篇文章也成为了迁移学习理论方面的经典文章。文章主要回答的问题就是：在怎样的误差范围内，从不同领域进行学习是可行的？
+
+\textbf{学习误差：} 给定两个领域$\mathcal{D}_s,\mathcal{D}_t$，$X$是定义在它们之上的数据，一个假设类$\mathcal{H}$。则两个领域$\mathcal{D}_s,\mathcal{D}_t$之间的$\mathcal{H}$-divergence被定义为
+
+\begin{equation}
+	\hat{d}_{\mathcal{H}}(\mathcal{D}_s,\mathcal{D}_t) = 2 \sup_{\eta \in \mathcal{H}} \left|\underset{\mathbf{x} \in \mathcal{D}_s}{P}[\eta(\mathbf{x}) = 1] - \underset{\mathbf{x} \in \mathcal{D}_t}{P}[\eta(\mathbf{x}) = 1] \right|
+\end{equation}
+
+因此，这个$\mathcal{H}$-divergence依赖于假设$\mathcal{H}$来判别数据是来自于$\mathcal{D}_s$还是$\mathcal{D}_t$。作者证明了，对于一个对称的$\mathcal{H}$，我们可以通过如下的方式进行计算
+
+\begin{equation}
+	d_\mathcal{H} (\mathcal{D}_s,\mathcal{D}_t) = 2 \left(1 - \min_{\eta \in \mathcal{H}} \left[\frac{1}{n_1} \sum_{i=1}^{n_1} I[\eta(\mathbf{x}_i)=0] + \frac{1}{n_2} \sum_{i=1}^{n_2} I[\eta(\mathbf{x}_i)=0]\right] \right)
+\end{equation}
+其中$I[a]$为指示函数：当$a$成立时其值为1,否则其值为0。
+
+\textbf{在目标领域的泛化界：}
+
+假设$\mathcal{H}$为一个具有$d$个VC维的假设类，则对于任意的$\eta \in \mathcal{H}$，下面的不等式有$1 - \delta$的概率成立：
+
+\begin{equation}
+	R_{\mathcal{D}_t}(\eta) \le R_s(\eta) + \sqrt{\frac{4}{n}(d \log \frac{2en}{d} + \log \frac{4}{\delta})} + \hat{d}_{\mathcal{H}}(\mathcal{D}_s,\mathcal{D}_t) + 4 \sqrt{\frac{4}{n}(d \log \frac{2n}{d} + \log \frac{4}{\delta})} + \beta
+\end{equation}
+其中
+\begin{equation}
+	\beta \ge \inf_{\eta^\star \in \mathcal{H}} [R_{\mathcal{D}_s}(\eta^\star) + R_{\mathcal{D}_t}(\eta^\star)]
+\end{equation}
+并且
+\begin{equation}
+	R_{s}(\eta) = \frac{1}{n} \sum_{i=1}^{m} I[\eta(\mathbf{x}_i) \ne y_i]
+\end{equation}
+
+具体的理论证明细节，请参照上述提到的三篇文章。
+
+在自己的研究中，如果需要进行相关的证明，可以参考一些已经发表的文章的写法，例如~\cite{long2014adaptation}等。
+
+另外，英国的Gretton等人也在进行一些学习理论方面的研究，有兴趣的读者可以关注他的个人主页：\url{http://www.gatsby.ucl.ac.uk/~gretton/}。

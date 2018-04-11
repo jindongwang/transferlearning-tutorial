@@ -1,0 +1,127 @@
+\documentclass[a4paper]{article}
+
+\usepackage[top=1in, bottom=1in, left=1.25in, right=1.25in]{geometry}
+\usepackage{titlesec}
+\usepackage{ctex}
+\usepackage{hyperref}
+\usepackage{booktabs} % For formal tables
+\usepackage{epsfig}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{bm}
+\usepackage{algorithm}
+\usepackage{algorithmic}
+\usepackage{url}
+\usepackage{subfigure}
+\usepackage{bbding}
+\usepackage{multirow}
+\usepackage{enumitem}
+\usepackage{multicol}
+\usepackage{listings}
+\usepackage{color}
+\newcommand*{\Scale}[2][4]{\scalebox{#1}{$#2$}}%
+
+\makeatletter % `@' now normal "letter"
+\@addtoreset{equation}{section}
+\makeatother  % `@' is restored as "non-letter"
+\renewcommand\theequation{\oldstylenums{\thesection}%
+	.\oldstylenums{\arabic{equation}}}
+
+%-----------------------------------------BEGIN DOC----------------------------------------
+
+\begin{document}
+
+\newpagestyle{main}{            
+	\sethead{}{迁移学习简明手册}{}     %设置页眉
+	\setfoot{}{\thepage}{}      %设置页脚，可以在页脚添加 \thepage  显示页数
+	\headrule                                      % 添加页眉的下划线c
+}
+\pagestyle{main}    %使用该style
+
+\renewcommand{\refname}{参考文献} 
+\renewcommand{\figurename}{图}
+\renewcommand{\tablename}{表}
+\renewcommand{\contentsname}{目录}
+\renewcommand{\today}{\number\year 年 \number\month 月 \number\day 日}
+\makeatletter
+
+\renewcommand\tableofcontents{%
+	\begin{multicols}{2}[%
+		\section*{%
+			\contentsname
+			\@mkboth{\MakeUppercase\contentsname}{\MakeUppercase\contentsname}}]%
+		\@starttoc{toc}%
+\end{multicols}}
+\makeatother
+
+
+\title{{\Huge 迁移学习简明手册{\large\linebreak\\}}{\Large 一点心得体会\\版本号：v1.0\linebreak\linebreak
+}}
+\author{\\
+	王晋东\\中国科学院计算技术研究所}
+\date{2018年4月}
+\maketitle
+\thispagestyle{empty}
+
+\newpage
+
+%-----------------------------------------ABSTRACT-------------------------------------
+\thispagestyle{empty}
+\begin{center}
+{\Large\bf{摘\ 要\\}}
+\end{center}
+迁移学习作为机器学习的一大分支，已经取得了长足的进步。本手册简明地介绍迁移学习的概念与基本方法，并对其中的领域自适应问题中的若干代表性方法进行讲述。最后简要探讨迁移学习未来可能的方向。
+
+本手册编写的目的是帮助迁移学习领域的初学者快速入门并掌握基本方法，为自己的研究和应用工作打下良好基础。
+
+本手册的编写逻辑很简单：是什么——介绍迁移学习；为什么——为什么要用迁移学习、为什么能用；怎么办——如何进行迁移(迁移学习方法)。其中，是什么和为什么解决概念问题，这是一切的前提；怎么办是我们的重点，也占据了最多的篇幅。为了最大限度地方便初学者，我们还特别编写了一章上手实践，直接分享实现代码和心得体会。
+\newpage
+
+\thispagestyle{empty}
+\section*{推荐语}
+
+\textit{看了王晋东同学的“迁移学习小册子”， 点三个赞！迁移学习被认为是机器学习的下一个爆点，但介绍迁移学习的文章却很有限。 这个册子深入浅出，既回顾了迁移学习的发展历史，又囊括了迁移学习的最新进展。 语言流畅，简明通透。 应该对机器学习的入门和提高都有很大帮助！}
+
+——杨强 (迁移学习权威学者，香港科技大学教授，IJCAI president, AAAI/ACM fellow)
+
+\newpage
+%-----------------------------------------ABSTRACT-------------------------------------
+%-----------------------------------------CONTENT-------------------------------------
+\pagenumbering{Roman}
+\setcounter{page}{1}
+\begin{center}
+\tableofcontents
+\end{center}
+\newpage
+
+%------------------------------------------TEXT--------------------------------------------
+
+%----------------------------------------OVERVIEW-----------------------------------------
+\input{chaps/prefix}
+\input{chaps/introduction}
+\input{chaps/research_area}
+\input{chaps/application}
+\input{chaps/basic}
+\input{chaps/method}
+\input{chaps/distributionadapt}
+\input{chaps/featureselect}
+\input{chaps/subspacelearn}
+\input{chaps/deep}
+\input{chaps/practice}
+\input{chaps/future}
+\input{chaps/conclusion}
+\input{chaps/appendix}
+
+%----------------------------------SYSTEM DESIGN------------------------------------------
+
+
+% -----------------------------------REFERENCE----------------------------------------
+
+
+\bibliographystyle{apalike}
+\bibliography{refs}
+
+\end{document}
+
+
