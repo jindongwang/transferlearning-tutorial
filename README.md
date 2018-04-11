@@ -48,7 +48,9 @@
 
 ### 参与方式
 
-欢迎有兴趣的学者一起加入，让手册更完善！参与方式：
+欢迎有兴趣的学者一起加入，让手册更完善！现阶段有2个branch：master用于开发和完善，V1.0是稳定的1.0版本。后续可根据进度增加更多的branch。
+
+参与方式：
 
 - 在[这个issue](https://github.com/jindongwang/transferlearning-tutorial/issues/1)下留言你的Github账号和邮箱，我将你添加到协作者中
 - 直接fork，然后将你的修改提交pull request
