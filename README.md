@@ -4,7 +4,9 @@
 
 ### 下载
 
-下载地址：[V1.0版本](http://jd92.wang/assets/files/transfer_learning_tutorial_wjd.pdf)
+下载地址：[V1.0版本](http://jd92.wang/assets/files/transfer_learning_tutorial_wjd.pdf) | [最新开发版](https://github.com/jindongwang/transferlearning-tutorial/blob/master/src/main.pdf)
+
+[手册网站与勘误表](http://t.cn/RmasEFe)
 
 ### 编译方式
 
@@ -58,7 +60,9 @@
 - 如果不熟悉git，可直接下载本目录，然后将你修改的部分发给我(jindongwang@outlook.com)
 - 有任何问题，均可以提交issue
 
-然后在下面的贡献者信息中加入自己的信息。
+贡献之后：
+- 在下面的贡献者信息中加入自己的信息。
+- 如果是对错误的更正，在`web/transfer_tutorial.html`中的"勘误表"部分加入勘误信息。
 
 ### 贡献者信息
 
