@@ -247,7 +247,7 @@ $n,m$分别是源域和目标域样本的个数。
 我们还缺一个限制条件，不然这个问题无法解。限制条件是什么呢？和TCA一样，变换前后数据的方差要维持不变。怎么求数据的方差呢，还和TCA一样：$\mathbf{A}^\top \mathbf{X} \mathbf{H} \mathbf{X}^\top \mathbf{A} = \mathbf{I}$，其中的$\mathbf{H}$也是中心矩阵，$\mathbf{I}$是单位矩阵。也就是说，我们又添加了一个优化目标是要$\max \mathbf{A}^\top \mathbf{X} \mathbf{H} \mathbf{X}^\top \mathbf{A}$(这一个步骤等价于PCA了)。和原来的优化目标合并，优化目标统一为：
 
 \begin{equation}
-	\min \frac{\sum_{c=0}^{C}tr(\mathbf{A}^\top \mathbf{X} \mathbf{M}_c \mathbf{X}^\top \mathbf{A}) + \lambda \Vert \mathbf{A}}{ \mathbf{A}^\top \mathbf{X} \mathbf{H} \mathbf{X}^\top \mathbf{A}}
+	\min \frac{\sum_{c=0}^{C}tr(\mathbf{A}^\top \mathbf{X} \mathbf{M}_c \mathbf{X}^\top \mathbf{A}) + \lambda \Vert \mathbf{A}\Vert^2_F}{ \mathbf{A}^\top \mathbf{X} \mathbf{H} \mathbf{X}^\top \mathbf{A}}
 \end{equation}
 
 这个式子实在不好求解。但是，有个东西叫做Rayleigh quotient~\footnote{\url{https://www.wikiwand.com/en/Rayleigh_quotient}}，上面两个一样的这种形式。因为$\mathbf{A}$是可以进行拉伸而不改改变最终结果的，而如果下面为0的话，整个式子就求不出来值了。所以，我们直接就可以让下面不变，只求上面。所以我们最终的优化问题形式搞成了
