@@ -31,3 +31,6 @@
 # auto folder when using emacs and auctex
 ./auto/*
 *.el
+
+# PDF
+*.pdf
