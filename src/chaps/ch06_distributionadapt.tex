@@ -40,7 +40,7 @@
 
 \subsubsection{核心方法}
 
-边缘分布自适应的方法最早由香港科技大学杨强教授团队提出~\cite{pan2011domain}，方法名称为迁移成分分析(Transfer Component Analysis)。由于$P(\mathbf{x}_s) \ne P(\mathbf{x}_t)$，因此，直接减小二者之间的距离是不可行的。TCA假设存在一个特征映射$\phi$，使得映射后数据的分布$P(\phi(\mathbf{x}_s)) \approx P(\phi(\mathbf{x}_s))$。TCA假设如果边缘分布接近，那么两个领域的条件分布也会接近，即条件分布$P(y_s | \phi(\mathbf{x}_s))) \approx P(y_t | \phi(\mathbf{x}_t)))$。这就是TCA的全部思想。因此，我们现在的目标是，找到这个合适的$\phi$。
+边缘分布自适应的方法最早由香港科技大学杨强教授团队提出~\cite{pan2011domain}，方法名称为迁移成分分析(Transfer Component Analysis)。由于$P(\mathbf{x}_s) \ne P(\mathbf{x}_t)$，因此，直接减小二者之间的距离是不可行的。TCA假设存在一个特征映射$\phi$，使得映射后数据的分布$P(\phi(\mathbf{x}_s)) \approx P(\phi(\mathbf{x}_t))$。TCA假设如果边缘分布接近，那么两个领域的条件分布也会接近，即条件分布$P(y_s | \phi(\mathbf{x}_s))) \approx P(y_t | \phi(\mathbf{x}_t)))$。这就是TCA的全部思想。因此，我们现在的目标是，找到这个合适的$\phi$。
 
 但是世界上有无穷个这样的$\phi$，也许终我们一生也无法找到合适的那一个。庄子说过，吾生也有涯，而知也无涯，以有涯随无涯，殆已！我们肯定不能通过穷举的方法来找$\phi$的。那么怎么办呢？
 
