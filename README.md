@@ -1,14 +1,24 @@
 # 《迁移学习简明手册》
 
-这是《迁移学习简明手册》的LaTex源码。主要目的是方便有兴趣的学者一起来贡献维护。
+这是《迁移学习简明手册》的LaTex源码。欢迎有兴趣的学者一起来贡献维护。
 
 ## 下载
 
-- V1.0版本: [地址1](http://jd92.wang/assets/files/transfer_learning_tutorial_wjd.pdf) [地址2](https://github.com/jindongwang/transferlearning-tutorial/releases)
+- V1.0版本: [地址1](http://jd92.wang/assets/files/transfer_learning_tutorial_wjd.pdf)   [地址2](https://github.com/jindongwang/transferlearning-tutorial/releases)
 
-- [最新开发版](https://www.jianguoyun.com/p/DSI5P2YQjKnsBRiU_0w)
+- 开发版：[地址1(最新)](https://www.jianguoyun.com/p/DSI5P2YQjKnsBRiU_0w)    [地址2(定期更新)](https://github.com/jindongwang/transferlearning-tutorial/releases/tag/%E6%9C%80%E6%96%B0%E5%BC%80%E5%8F%91%E7%89%88)
 
 - [手册网站与勘误表](http://t.cn/RmasEFe)
+
+## 意见与建议
+
+对于不足和错误之处，以及新的意见，欢迎到[这里](https://github.com/jindongwang/transferlearning-tutorial/issues/6)留言！
+
+- - -
+
+## 参与贡献方式
+
+以下部分为参与贡献的详细说明。
 
 ### 编译方式
 
@@ -56,9 +66,7 @@
 
 欢迎有兴趣的学者一起加入，让手册更完善！现阶段有2个branch：master用于开发和完善，V1.0是稳定的1.0版本。后续可根据进度增加更多的branch。
 
-对于不足和错误之处，以及新的意见，欢迎到[这里](https://github.com/jindongwang/transferlearning-tutorial/issues/6)留言！
-
-参与方式：
+具体参与方式：
 
 - 在[这个issue](https://github.com/jindongwang/transferlearning-tutorial/issues/1)下留言你的Github账号和邮箱，我将你添加到协作者中
 - 直接fork，然后将你的修改提交pull request
