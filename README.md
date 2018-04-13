@@ -12,7 +12,9 @@
 
 ### 编译方式
 
-在任何装有较新版TexLive的电脑上，使用`xelatex`方式进行编译。
+- 在任何装有较新版TexLive的电脑上，首先选择`xelatex`引擎进行第一次编译
+- 再选择`BibTeX`编译一次生成参考文献
+- 最后选择`xelatex`引擎进行第三次编译即可生成带书签的PDF文档
 
 ### 主要文件介绍
 
@@ -40,11 +42,10 @@
 
 所有的图片都在`figures/`文件夹下。推荐实用eps或pdf格式高清文件。
 
-参考文件采用`bibtex`方式，见`refs.bib`文件。
+参考文献采用`bibtex`方式，见`refs.bib`文件。
 
 ### 未来计划
 
-- [ ] "目录"这两个字不如为什么天各一方了...
 - [ ] 丰富和完善现有的V1.0
 - [ ] 单独写一章介绍基于实例的迁移学习方法(instance-based)，以及相关的instance selection method，如比较经典的tradaboost等
 - [ ] 深度和对抗迁移学习方法分成两章，再结合有关文献进行补充
@@ -71,3 +72,4 @@
 ### 贡献者信息
 
 - [@jindongwang](https://github.com/jindongwang) 王晋东，中国科学院计算技术研究所 
+- [@Godblesswz](https://github.com/Godblesswz) 万震，重庆大学土木工程学院 
