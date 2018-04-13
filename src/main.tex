@@ -4,6 +4,15 @@
 \usepackage{titlesec}
 \usepackage{ctex}
 \usepackage{hyperref}
+\hypersetup{
+   pdftitle = {迁移学习简明手册}, %pdf属性设置
+	 pdfauthor = {王晋东},
+	 linktoc=all,
+	 bookmarksnumbered=true,  %设置书签各章节编号
+	 breaklinks=true,
+	 colorlinks=true,
+	 urlcolor=magenta,
+	 allcolors=black}
 \usepackage{booktabs} % For formal tables
 \usepackage{epsfig}
 \usepackage{graphicx}
@@ -44,16 +53,6 @@
 \renewcommand{\tablename}{表}
 \renewcommand{\contentsname}{目录}
 \renewcommand{\today}{\number\year 年 \number\month 月 \number\day 日}
-\makeatletter
-
-\renewcommand\tableofcontents{%
-  \begin{multicols}{2}[%
-    \section*{%
-      \contentsname
-      \@mkboth{\MakeUppercase\contentsname}{\MakeUppercase\contentsname}}]%
-    \@starttoc{toc}%
-\end{multicols}}
-\makeatother
 
 
 \title{{\Huge 迁移学习简明手册{\large\linebreak\\}}{\Large 一点心得体会\\版本号：v1.0\linebreak\linebreak
@@ -91,9 +90,13 @@
 %-----------------------------------------CONTENT-------------------------------------
 \pagenumbering{Roman}
 \setcounter{page}{1}
-\begin{center}
-\tableofcontents
-\end{center}
+\begingroup           
+\begin{multicols}{2}[
+	\setlength{\columnseprule}{.4pt}
+	\setlength{\columnsep}{18pt}]
+	\tableofcontents
+\end{multicols}
+\endgroup
 \newpage
 
 %------------------------------------------TEXT--------------------------------------------
