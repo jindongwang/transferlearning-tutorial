@@ -2,11 +2,13 @@
 
 这是《迁移学习简明手册》的LaTex源码。主要目的是方便有兴趣的学者一起来贡献维护。
 
-### 下载
+## 下载
 
-下载地址：[V1.0版本](http://jd92.wang/assets/files/transfer_learning_tutorial_wjd.pdf) | [最新开发版](https://www.jianguoyun.com/p/DSI5P2YQjKnsBRiU_0w)
+- V1.0版本: [地址1](http://jd92.wang/assets/files/transfer_learning_tutorial_wjd.pdf) [地址2](https://github.com/jindongwang/transferlearning-tutorial/releases)
 
-[手册网站与勘误表](http://t.cn/RmasEFe)
+- [最新开发版](https://www.jianguoyun.com/p/DSI5P2YQjKnsBRiU_0w)
+
+- [手册网站与勘误表](http://t.cn/RmasEFe)
 
 ### 编译方式
 
