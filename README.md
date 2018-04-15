@@ -14,6 +14,14 @@
 
 对于不足和错误之处，以及新的意见，欢迎到[这里](https://github.com/jindongwang/transferlearning-tutorial/issues/6)留言！
 
+### 引用
+
+可以按如下方式进行引用：
+
+Jindong Wang et al. Transfer Learning Tutorial. 2018. 
+
+王晋东等. 迁移学习简明手册. 2018.
+
 - - -
 
 ## 参与贡献方式
