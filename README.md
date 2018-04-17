@@ -103,6 +103,21 @@ Jindong Wang et al. Transfer Learning Tutorial. 2018.
 - 在下面的贡献者信息中加入自己的信息。
 - 如果是对错误的更正，在`web/transfer_tutorial.html`中的"勘误表"部分加入勘误信息。
 
+### 如何提交 Pull Request
+#### 准备工作
+
+1. 在原始代码库上点 Fork ，在自己的账户下开一个分支代码库
+1. 将自己的分支克隆到本地
+    * `git clone https://github.com/(YOUR_GIT_NAME)/transferlearning-tutorial.git`
+1. 将本机自己的 fork 的代码库和 GitHub 上原始作者的代码库 ，即上游（ upstream ）连接起来
+    * `git remote add upstream https://github.com/jindongwang/transferlearning-tutorial.git`
+
+#### 提交代码
+1. 每次修改之前，先将自己的本地分支同步到上游分支的最新状态
+    * `git pull upstream master`
+1. 作出修改后 push 到自己名下的代码库
+1. 在 GitHub 网页端自己的账户下看到最新修改后点击 New pull request 即可
+
 ### 贡献者信息
 
 - [@jindongwang](https://github.com/jindongwang) 王晋东，中国科学院计算技术研究所
