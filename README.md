@@ -18,9 +18,27 @@
 
 可以按如下方式进行引用：
 
-Jindong Wang et al. Transfer Learning Tutorial. 2018. 
+Jindong Wang et al. Transfer Learning Tutorial. 2018.
 
 王晋东等. 迁移学习简明手册. 2018.
+
+#### BibTeX
+
+```
+@misc{WangTLTutorial2018,
+	Author = {Jindon Wang et al.},
+	Title = {Transfer Learning Tutorial},
+	Url = {https://github.com/jindongwang/transferlearning-tutorial},
+	Year = {2018},
+}
+
+@misc{WangTLTutorial2018cn,
+	Author = {王晋东等},
+	Title = {迁移学习简明手册},
+	Url = {https://github.com/jindongwang/transferlearning-tutorial},
+	Year = {2018},
+}
+```
 
 - - -
 
@@ -87,5 +105,5 @@ Jindong Wang et al. Transfer Learning Tutorial. 2018.
 
 ### 贡献者信息
 
-- [@jindongwang](https://github.com/jindongwang) 王晋东，中国科学院计算技术研究所 
-- [@Godblesswz](https://github.com/Godblesswz) 万震，重庆大学土木工程学院 
+- [@jindongwang](https://github.com/jindongwang) 王晋东，中国科学院计算技术研究所
+- [@Godblesswz](https://github.com/Godblesswz) 万震，重庆大学土木工程学院

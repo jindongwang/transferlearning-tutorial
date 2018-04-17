@@ -8,5 +8,5 @@ if [ -f $1.tex ];then
     bibtex $1
     xelatex $1
     xelatex $1
-    rm *.lof *.lot *.out *.toc *.log *.aux *.bbl *.blg *.bak *.sav *.dvi *.gz
+    rm *.lof *.lot *.out *.log *.aux *.bbl *.blg *.bak *.sav *.dvi *.gz
 fi
