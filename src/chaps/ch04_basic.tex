@@ -41,7 +41,7 @@
 
 结合上述形式化，我们给出\textbf{领域自适应(Domain Adaptation)}这一热门研究方向的定义：
 
-\textbf{领域自适应(Domain Adaptation):} 给定一个有标记的源域$\mathcal{D}_s=\{\mathbf{x}_{i},y_{i}\}^n_{i=1}$和一个无标记的目标域$\mathcal{D}_t=\{\mathbf{x}_{j}\}^{n+m}_{j=n+1}$，假定它们的特征空间相同，即$\mathcal{X}_s = \mathcal{X}_t$，并且它们的类别空间也相同，即$\mathcal{Y}_s = \mathcal{Y}_t$。但是这两个域的边缘分布不同，即$P_s(\mathbf{x}_s) \ne P_t(\mathbf{x}_t)$，条件概率分布也不同，即$Q_s(y_s|\mathbf{x}_s) \ne Q_t(y_t|\mathbf{x}_t)$。迁移学习的目标就是，利用有标记的数据$\mathcal{D}_s$去学习一个分类器$f:\mathbf{x}_t \mapsto \mathbf{y}_t$来预测目标域$\mathcal{D}_t$的标签$\mathbf{y}_t \in \mathcal{Y}_t$.
+\textbf{领域自适应(Domain Adaptation):} 给定一个有标记的源域$\mathcal{D}_s=\{\mathbf{x}_{i},y_{i}\}^n_{i=1}$和一个无标记的目标域$\mathcal{D}_t=\{\mathbf{x}_{j}\}^{n+m}_{j=n+1}$，假定它们的特征空间相同，即$\mathcal{X}_s = \mathcal{X}_t$，并且它们的类别空间也相同，即$\mathcal{Y}_s = \mathcal{Y}_t$以及条件概率分布也相同，即$Q_s(y_s|\mathbf{x}_s) = Q_t(y_t|\mathbf{x}_t)$。但是这两个域的边缘分布不同，即$P_s(\mathbf{x}_s) \ne P_t(\mathbf{x}_t)$。迁移学习的目标就是，利用有标记的数据$\mathcal{D}_s$去学习一个分类器$f:\mathbf{x}_t \mapsto \mathbf{y}_t$来预测目标域$\mathcal{D}_t$的标签$\mathbf{y}_t \in \mathcal{Y}_t$.
 
 在实际的研究和应用中，读者可以针对自己的不同任务，结合上述表述，灵活地给出相关的形式化定义。
 
@@ -206,14 +206,14 @@ Jensen–Shannon divergence，基于KL散度发展而来，是对称度量：
 
 \subsubsection{最大均值差异MMD}
 
-最大均值差异是迁移学习中使用频率最高的度量。Maximum mean discrepancy，它度量在再生希尔伯特空间中两个分布的距离，是一种核学习方法。两个随机变量的距离为
+最大均值差异是迁移学习中使用频率最高的度量。Maximum mean discrepancy，它度量在再生希尔伯特空间中两个分布的距离，是一种核学习方法。两个随机变量的MMD平方距离为
 
 \begin{equation}
 	\label{eq-dist-mmd}
-	MMD(X,Y)=\left \Vert \sum_{i=1}^{n_1}\phi(\mathbf{x}_i)- \sum_{j=1}^{n_2}\phi(\mathbf{y}_j) \right \Vert^2_\mathcal{H}
+	MMD^2(X,Y)=\left \Vert \sum_{i=1}^{n_1}\phi(\mathbf{x}_i)- \sum_{j=1}^{n_2}\phi(\mathbf{y}_j) \right \Vert^2_\mathcal{H}
 \end{equation}
 
-其中$\phi(\cdot)$是映射，用于把原变量映射到\textit{再生核希尔伯特空间}(Reproducing Kernel Hilbert Space, RKHS)~\cite{borgwardt2006integrating}中。什么是RKHS？形式化定义太复杂，简单来说就是这个空间是对于函数的内积完备的。就是比欧几里得空间更高端的。
+其中$\phi(\cdot)$是映射，用于把原变量映射到\textit{再生核希尔伯特空间}(Reproducing Kernel Hilbert Space, RKHS)~\cite{borgwardt2006integrating}中。什么是RKHS？形式化定义太复杂，简单来说希尔伯特空间是对于函数的内积完备的，而再生核希尔伯特空间是具有再生性$\langle K(x,\cdot),K(y,\cdot)\rangle_\mathcal{H}=K(x,y)$的希尔伯特空间。就是比欧几里得空间更高端的。将平方展开后，RKHS空间中的内积就可以转换成核函数，所以最终MMD可以直接通过核函数进行计算。
 
 理解：就是求两堆数据在RKHS中的\textit{均值}的距离。
 
@@ -254,6 +254,21 @@ $\mathcal{A}$-distance通常被用来计算两个领域数据的相似性程度�
 	HSIC(X,Y) = trace(HXHY)
 \end{equation}
 其中$X,Y$是两堆数据的kernel形式。
+
+\subsubsection{Wasserstein Distance}
+
+Wasserstein Distance是一套用来衡量两个概率分部之间距离的度量方法。该距离在一个度量空间$(M,\rho)$上定义，其中$\rho(x,y)$表示集合$M$中两个实例$x$和$y$的距离函数，比如欧几里得距离。两个概率分布$\mathbb{P}$和$\mathbb{Q}$之间的$p{\text{-th}}$ Wasserstein distance可以被定义为
+
+\begin{equation}
+W_p(\mathbb{P}, \mathbb{Q}) = \Big(\inf_{\mu \in \Gamma(\mathbb{P}, \mathbb{Q}) } \int \rho(x,y)^p d\mu(x,y) \Big)^{1/p},
+\end{equation}
+
+其中$\Gamma(\mathbb{P}, \mathbb{Q})$是在集合$M\times M$内所有的以$\mathbb{P}$和$\mathbb{Q}$为边缘分布的联合分布。著名的Kantorovich-Rubinstein定理表示当$M$是可分离的时候，第一Wasserstein distance可以等价地表示成一个积分概率度量(integral probability metric)的形式
+
+\begin{equation}
+W_1(\mathbb{P},\mathbb{Q})= \sup_{\left \| f \right \|_L \leq 1} \mathbb{E}_{x \sim \mathbb{P}}[f(x)] - \mathbb{E}_{x \sim \mathbb{Q}}[f(x)],
+\end{equation}
+其中$\left \| f \right \|_L = \sup{|f(x) - f(y)|} / \rho(x,y)$并且$\left \| f \right \|_L \leq 1$称为$1-$利普希茨条件。
 
 \subsection{迁移学习的理论保证*}
 \textit{
