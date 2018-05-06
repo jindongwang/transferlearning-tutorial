@@ -1,4 +1,8 @@
 # 《迁移学习简明手册》
+[![MIT License](https://img.shields.io/badge/license-MIT-green.svg)](https://opensource.org/licenses/MIT) 
+[![GitHub release](https://img.shields.io/badge/Github-V1.0-519dd9.svg)](https://github.com/jindongwang/transferlearning-tutorial)
+[![GitHub commits](https://img.shields.io/badge/commits-1-519dd9.svg)](https://github.com/jindongwang/transferlearning-tutorial/issues)
+![](https://img.shields.io/badge/language-Tex-orange.svg)
 
 这是《迁移学习简明手册》的LaTex源码。欢迎有兴趣的学者一起来贡献维护。
 
@@ -121,4 +125,4 @@ Jindong Wang et al. Transfer Learning Tutorial. 2018.
 ### 贡献者信息
 
 - [@jindongwang](https://github.com/jindongwang) 王晋东，中国科学院计算技术研究所
-- [@Godblesswz](https://github.com/Godblesswz) 万震，重庆大学土木工程学院
+- [@Godblesswz](https://github.com/Godblesswz) 万震，重庆大学
