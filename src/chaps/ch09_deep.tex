@@ -307,7 +307,7 @@ AdaBN对比其他方法，实现相当简单。并且，方法本身不带有任
 
 \subsubsection{小结}
 
-基于深度网络进行迁移学习，其核心在于，找到网络需要进行自适应的层，并且对这些导加上自适应的损失度量。越来越多的研究者开始使用深度网络进行迁移学习~\cite{long2016deep,zhuo2017deep,zhuang2015supervised,sun2016deep,wei2016deep,luo2017label}。在这其中，几乎绝大多数方法都采用了卷积神经网络，在已训练好的模型(如AlexNet、Inception、GoogLeNet、Resnet等)上进行迁移。
+基于深度网络进行迁移学习，其核心在于，找到网络需要进行自适应的层，并且对这些层加上自适应的损失度量。越来越多的研究者开始使用深度网络进行迁移学习~\cite{long2016deep,zhuo2017deep,zhuang2015supervised,sun2016deep,wei2016deep,luo2017label}。在这其中，几乎绝大多数方法都采用了卷积神经网络，在已训练好的模型(如AlexNet、Inception、GoogLeNet、Resnet等)上进行迁移。
 
 特别地，最近意大利的学者Carlucci等人在2017年计算机视觉领域顶级会议ICCV上提出了自动深度网络自适应层(AutoDIAL, Automatic DomaIn Alignment Layers)~\cite{carlucci2017autodial}。该方法可以很简单地被加入现有的深度网络中，实现自动的自适应学习，使得深度网络的迁移更便捷。
 
