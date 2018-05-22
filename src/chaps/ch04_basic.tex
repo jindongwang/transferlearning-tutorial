@@ -289,7 +289,7 @@ W_1(\mathbb{P},\mathbb{Q})= \sup_{\left \| f \right \|_L \leq 1} \mathbb{E}_{x \
 因此，这个$\mathcal{H}$-divergence依赖于假设$\mathcal{H}$来判别数据是来自于$\mathcal{D}_s$还是$\mathcal{D}_t$。作者证明了，对于一个对称的$\mathcal{H}$，我们可以通过如下的方式进行计算
 
 \begin{equation}
-	d_\mathcal{H} (\mathcal{D}_s,\mathcal{D}_t) = 2 \left(1 - \min_{\eta \in \mathcal{H}} \left[\frac{1}{n_1} \sum_{i=1}^{n_1} I[\eta(\mathbf{x}_i)=0] + \frac{1}{n_2} \sum_{i=1}^{n_2} I[\eta(\mathbf{x}_i)=0]\right] \right)
+	d_\mathcal{H} (\mathcal{D}_s,\mathcal{D}_t) = 2 \left(1 - \min_{\eta \in \mathcal{H}} \left[\frac{1}{n_1} \sum_{i=1}^{n_1} I[\eta(\mathbf{x}_i)=0] + \frac{1}{n_2} \sum_{i=1}^{n_2} I[\eta(\mathbf{x}_i)=1]\right] \right)
 \end{equation}
 其中$I[a]$为指示函数：当$a$成立时其值为1,否则其值为0。
 
