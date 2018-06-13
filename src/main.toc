@@ -31,7 +31,7 @@
 \contentsline {subsubsection}{\numberline {4.3.5}Principal Angle}{16}{subsubsection.4.3.5}
 \contentsline {subsubsection}{\numberline {4.3.6}A-distance}{16}{subsubsection.4.3.6}
 \contentsline {subsubsection}{\numberline {4.3.7}Hilbert-Schmidt Independence Criterion}{16}{subsubsection.4.3.7}
-\contentsline {subsubsection}{\numberline {4.3.8}Wasserstein Distance}{17}{subsubsection.4.3.8}
+\contentsline {subsubsection}{\numberline {4.3.8}Wasserstein Distance}{16}{subsubsection.4.3.8}
 \contentsline {subsection}{\numberline {4.4}迁移学习的理论保证*}{17}{subsection.4.4}
 \contentsline {section}{\numberline {5}迁移学习的基本方法}{19}{section.5}
 \contentsline {subsection}{\numberline {5.1}基于样本迁移}{19}{subsection.5.1}
