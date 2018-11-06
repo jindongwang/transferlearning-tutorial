@@ -6,6 +6,8 @@
 
 这是《迁移学习简明手册》的LaTex源码。欢迎有兴趣的学者一起来贡献维护。
 
+# I'm considering a big update to this tutorial later this year. If you are interested, please feel free to contact me!
+
 ## 下载
 
 - V1.0版本: [地址1](http://jd92.wang/assets/files/transfer_learning_tutorial_wjd.pdf)   [地址2](https://github.com/jindongwang/transferlearning-tutorial/releases)
