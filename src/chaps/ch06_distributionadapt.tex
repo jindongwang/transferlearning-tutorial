@@ -138,7 +138,7 @@ DISTANCE(\mathcal{D}_s,\mathcal{D}_t) \approx ||P(y_s|\mathbf{x}_s) - P(y_t|\mat
 
 目前单独利用条件分布自适应的工作较少，这些工作主要可以在~\cite{saito2017asymmetric}中找到。最近，中科院计算所的Wang等人提出了STL方法(Stratified Transfer Learning)~\cite{wang2018stratified}。作者提出了\textit{类内迁移}(Intra-class Transfer)的思想。指出现有的绝大多数方法都只是学习一个全局的特征变换(Global Domain Shift)，而忽略了类内的相似性。类内迁移可以利用类内特征，实现更好的迁移效果。
 
-STL方法的基本思路如图所示。首先利用大多数投票的思想，对无标定的位置行为生成伪标签；然后在再生核希尔伯特空间中，利用类内相关性进行自适应地空间降维，使得不同情境中的行为数据之间的相关性增大；最后，通过二次标定，实现对未知标定数据的精准标定。
+STL方法的基本思路如图~\ref{fig-distribution-stl}所示。首先利用大多数投票的思想，对无标定的位置行为生成伪标签；然后在再生核希尔伯特空间中，利用类内相关性进行自适应地空间降维，使得不同情境中的行为数据之间的相关性增大；最后，通过二次标定，实现对未知标定数据的精准标定。
 
 \begin{figure}[htbp]
 	\centering
