@@ -10,9 +10,9 @@
 
 ## 下载
 
-- V1.0版本: [地址1](http://jd92.wang/assets/files/transfer_learning_tutorial_wjd.pdf)   [地址2](https://github.com/jindongwang/transferlearning-tutorial/releases)
+- V1.1版本: [地址1](http://jd92.wang/assets/files/transfer_learning_tutorial_wjd.pdf)   [地址2](https://github.com/jindongwang/transferlearning-tutorial/releases)
 
-- 开发版：[地址1(最新)](https://www.jianguoyun.com/p/DSI5P2YQjKnsBRiU_0w)    [地址2(定期更新)](https://github.com/jindongwang/transferlearning-tutorial/releases/tag/%E6%9C%80%E6%96%B0%E5%BC%80%E5%8F%91%E7%89%88)
+- 开发版：[地址](https://www.jianguoyun.com/p/DSI5P2YQjKnsBRiU_0w)
 
 - [手册网站与勘误表](http://t.cn/RmasEFe)
 
@@ -113,9 +113,9 @@ Jindong Wang et al. Transfer Learning Tutorial. 2018.
 #### 准备工作
 
 1. 在原始代码库上点 Fork ，在自己的账户下开一个分支代码库
-1. 将自己的分支克隆到本地
+2. 将自己的分支克隆到本地
     * `git clone https://github.com/(YOUR_GIT_NAME)/transferlearning-tutorial.git`
-1. 将本机自己的 fork 的代码库和 GitHub 上原始作者的代码库 ，即上游（ upstream ）连接起来
+3. 将本机自己的 fork 的代码库和 GitHub 上原始作者的代码库 ，即上游（ upstream ）连接起来
     * `git remote add upstream https://github.com/jindongwang/transferlearning-tutorial.git`
 
 #### 提交代码
