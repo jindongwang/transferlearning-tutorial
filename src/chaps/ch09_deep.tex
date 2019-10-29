@@ -408,6 +408,17 @@ DDC方法的作者、加州大学伯克利分校的Tzeng等人在2017年发表�
 	E=\frac{1}{n_t} \sum_{\mathbf{x}_i \in \mathcal{D}_t} H(G_y(G_f(\mathbf{x}_i)))
 \end{equation}
 
+\textbf{4. DAAN}
+
+最近，Yu等人在~\cite{yu2019transfer}中将动态分布适配的概念进一步扩展到了对抗网络中，证明了对抗网络中同样存在边缘分布和条件分布不匹配的问题。作者提出一个动态对抗适配网络DAAN (Dynamic Adversarial Adaptation Networks)来解决对抗网络中的动态分布适配问题，取得了当前的最好效果。图~\ref{fig-deep-daan}展示了DAAN的架构。
+
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[scale=.35]{./figures/fig-distribution-daan.png}
+	\caption{动态对抗适配网络DAAN结构示意图}
+	\label{fig-deep-daan}
+\end{figure}
+
 \subsubsection{小结}
 
 使用对抗网络进行迁移学习是近年来的研究热点。我们期待在这个领域会有越来越多的工作发表。
