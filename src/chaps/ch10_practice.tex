@@ -47,7 +47,9 @@
 
 %\subsection{非深度迁移}
 
-在众多的非深度迁移学习方法中，我们选择发表于ICCV-13的JDA(Joint Adaptation Network)~\cite{long2013transfer}方法进行实践。实验平台为普通机器上的Matlab软件。
+在众多的非深度迁移学习方法中，我们选择最经典的迁移方法之一、发表于IEEE TNN 2011的TCA(Transfer Component Analysis)~\cite{pan2011domain}方法进行实践。为了便于学习，我们同时用Matlab和Python实现了此代码。代码的链接为\url{https://github.com/jindongwang/transferlearning/tree/master/code/traditional/TCA}。下面我们对代码进行简单讲解。
+
+\subsubsection{Matlab}
 
 \textbf{1. 数据获取}
 
@@ -69,12 +71,11 @@ Yt = labels;            clear labels
 
 \textbf{2. 算法精炼}
 
-JDA主要进行边缘分布和条件分布的自适应。通过整理化简，JDA最终的求解目标是：
-
+TCA主要进行边缘分布自适应。通过整理化简，TCA最终的求解目标是：
 \begin{equation}
 \label{equ-eigen}
 \begin{split}
-\left(\mathbf{X} \sum_{c=0}^{C} \mathbf{M}_c \mathbf{X}^\top + \lambda \mathbf{I}\right) \mathbf{A} =\mathbf{X} \mathbf{H} \mathbf{X}^\top \mathbf{A} \Phi 
+\left(\mathbf{X} \mathbf{M} \mathbf{X}^\top + \lambda \mathbf{I}\right) \mathbf{A} =\mathbf{X} \mathbf{H} \mathbf{X}^\top \mathbf{A} \Phi 
 \end{split}
 \end{equation}
 
@@ -92,105 +93,59 @@ JDA主要进行边缘分布和条件分布的自适应。通过整理化简，JD
 
 \textbf{3. 编写代码}
 
-我们参考JDA开源的代码，直接给出精炼后的源码：
+我们直接给出精炼后的源码：
 
-\begin{lstlisting}[title=JDA方法的Matlab实现, frame=shadowbox]
-function [acc,acc_ite,A] = MyJDA(X_src,Y_src,X_tar,Y_tar,options)
-% This is the implementation of Joint Distribution Adaptation.
-% Reference: Mingsheng Long et al. Transfer feature learning with joint distribution adaptation. ICCV 2013.
+\begin{lstlisting}[title=TCA方法的Matlab实现, frame=shadowbox]
+function [X_src_new,X_tar_new,A] = TCA(X_src,X_tar,options)
+% The is the implementation of Transfer Component Analysis.
+% Reference: Sinno Pan et al. Domain Adaptation via Transfer Component Analysis. TNN 2011.
 
-% Inputs:
-%%% X_src          :     source feature matrix, ns * n_feature
-%%% Y_src          :     source label vector, ns * 1
-%%% X_tar          :     target feature matrix, nt * n_feature
-%%% Y_tar          :     target label vector, nt * 1
-%%% options        :     option struct
-%%%%% lambda       :     regularization parameter
-%%%%% dim          :     dimension after adaptation, dim <= n_feature
-%%%%% kernel_tpye  :     kernel name, choose from 'primal' | 'linear' | 'rbf'
-%%%%% gamma        :     bandwidth for rbf kernel, can be missed for other kernels
-%%%%% T            :     n_iterations, T >= 1. T <= 10 is suffice
+% Inputs: 
+%%% X_src          :    source feature matrix, ns * n_feature
+%%% X_tar          :    target feature matrix, nt * n_feature
+%%% options        :    option struct
+%%%%% lambda       :    regularization parameter
+%%%%% dim          :    dimensionality after adaptation (dim <= n_feature)
+%%%%% kernel_tpye  :    kernel name, choose from 'primal' | 'linear' | 'rbf'
+%%%%% gamma        :    bandwidth for rbf kernel, can be missed for other kernels
 
-% Outputs:
-%%% acc            :     final accuracy using knn, float
-%%% acc_ite        :     list of all accuracies during iterations
-%%% A              :     final adaptation matrix, (ns + nt) * (ns + nt)
+% Outputs: 
+%%% X_src_new      :    transformed source feature matrix, ns * dim
+%%% X_tar_new      :    transformed target feature matrix, nt * dim
+%%% A              :    adaptation matrix, (ns + nt) * (ns + nt)
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %% Set options
 lambda = options.lambda;              
 dim = options.dim;                    
 kernel_type = options.kernel_type;    
-gamma = options.gamma;               
-T = options.T;                        
+gamma = options.gamma;                
 
-acc_ite = [];
-Y_tar_pseudo = [];
-%% Iteration
-for i = 1 : T
-[Z,A] = JDA_core(X_src,Y_src,X_tar,Y_tar_pseudo,options);
-%normalization for better classification performance
-Z = Z*diag(sparse(1./sqrt(sum(Z.^2))));
-Zs = Z(:,1:size(X_src,1));
-Zt = Z(:,size(X_src,1)+1:end);
-
-knn_model = fitcknn(Zs',Y_src,'NumNeighbors',1);
-Y_tar_pseudo = knn_model.predict(Zt');
-acc = length(find(Y_tar_pseudo==Y_tar))/length(Y_tar); 
-fprintf('JDA+NN=%0.4f\n',acc);
-acc_ite = [acc_ite;acc];
-end
-
-end
-
-function [Z,A] = JDA_core(X_src,Y_src,X_tar,Y_tar_pseudo,options)
-%% Set options
-lambda = options.lambda;              %% lambda for the regularization
-dim = options.dim;                    %% dim is the dimension after adaptation, dim <= m
-kernel_type = options.kernel_type;    %% kernel_type is the kernel name, primal|linear|rbf
-gamma = options.gamma;                %% gamma is the bandwidth of rbf kernel
-
-%% Construct MMD matrix
+%% Calculate
 X = [X_src',X_tar'];
 X = X*diag(sparse(1./sqrt(sum(X.^2))));
 [m,n] = size(X);
 ns = size(X_src,1);
 nt = size(X_tar,1);
 e = [1/ns*ones(ns,1);-1/nt*ones(nt,1)];
-C = length(unique(Y_src));
-
-%%% M0
-M = e * e' * C;  %multiply C for better normalization
-
-%%% Mc
-N = 0;
-if ~isempty(Y_tar_pseudo) && length(Y_tar_pseudo)==nt
-for c = reshape(unique(Y_src),1,C)
-e = zeros(n,1);
-e(Y_src==c) = 1 / length(find(Y_src==c));
-e(ns+find(Y_tar_pseudo==c)) = -1 / length(find(Y_tar_pseudo==c));
-e(isinf(e)) = 0;
-N = N + e*e';
-end
-end
-
-M = M + N;
+M = e * e';
 M = M / norm(M,'fro');
-
-%% Centering matrix H
-H = eye(n) - 1/n * ones(n,n);
-
-%% Calculation
+H = eye(n)-1/(n)*ones(n,n);
 if strcmp(kernel_type,'primal')
 [A,~] = eigs(X*M*X'+lambda*eye(m),X*H*X',dim,'SM');
-Z = A'*X;
+Z = A' * X;
+Z = Z * diag(sparse(1./sqrt(sum(Z.^2))));
+X_src_new = Z(:,1:ns)';
+X_tar_new = Z(:,ns+1:end)';
 else
-K = kernel_jda(kernel_type,X,[],gamma);
+K = TCA_kernel(kernel_type,X,[],gamma);
 [A,~] = eigs(K*M*K'+lambda*eye(n),K*H*K',dim,'SM');
-Z = A'*K;
+Z = A' * K;
+Z = Z*diag(sparse(1./sqrt(sum(Z.^2))));
+X_src_new = Z(:,1:ns)';
+X_tar_new = Z(:,ns+1:end)';
 end
-
 end
 
 % With Fast Computation of the RBF kernel matrix
@@ -210,8 +165,7 @@ end
 % Modified by Mingsheng Long
 % 2013(c)
 % Mingsheng Long (longmingsheng@gmail.com), 2013
-
-function K = kernel_jda(ker,X,X2,gamma)
+function K = TCA_kernel(ker,X,X2,gamma)
 
 switch ker
 case 'linear'
@@ -252,17 +206,14 @@ end
 
 \end{lstlisting}
 
-我们将JDA方法包装成函数$\mathrm{MyJDA}$。函数共接受5个输入参数：
+我们将TCA方法包装成函数$\mathrm{TCA}$。注意到TCA是一个无监督迁移方法，不需要接受label作为参数。因此，函数共接受3个输入参数：
 
 \begin{itemize}
 	\item $\mathrm{X_{src}}$: 源域的特征，大小为$n_s \times m$
-	\item $\mathrm{Y_{src}}$: 源域的标注，大小为$n_s \times 1$
 	\item $\mathrm{X_{tar}}$: 目标域的特征，大小为$n_t \times m$
-	\item $\mathrm{Y_{tar}}$: 目标域的标注，大小为$n_t \times 1$
 	\item $\mathrm{options}$: 参数结构体，它包含：
 	\begin{itemize}
-		\item $\lambda$c: 平衡参数，可以自由给出
-		\item $T$: 算法迭代次数
+		\item $\lambda$: 平衡参数，可以自由给出
 		\item $dim$: 算法最终选择将数据将到多少维
 		\item $kernel type$: 选择的核类型，可以选择RBF、线性、或无核
 		\item $\gamma$: 如果选择RBF核，那么它的宽度为$\gamma$
@@ -271,42 +222,138 @@ end
 
 函数的输出包含3项：
 \begin{itemize}
-	\item $acc$: 算法的精度
-	\item $acc_{iter}$: 算法每次迭代的精度，是一个一维数据
+	\item $X_{srcnew}$: TCA后的源域
+	\item $X_{tarnew}$: TCA后的目标域
 	\item $A$: 最终的变换矩阵
 \end{itemize}
 
 \textbf{4. 测试算法}
 
-我们使用如下的代码对JDA算法进行测试：
+我们使用如下的代码对TCA算法进行测试：
 
 \begin{lstlisting}
-options.T = 10;             % #iterations, default=10
 options.gamma = 2;          % the parameter for kernel
 options.kernel_type = 'linear';
 options.lambda = 1.0;
 options.dim = 20;
-[Acc,Acc_iter,A] = MyJDA(Xs,Ys,Xt,Yt,options);
-disp(Acc);
+[X_src_new,X_tar_new,A] = TCA(Xs,Xt,options);
+
+% Use knn to predict the target label
+knn_model = fitcknn(X_src_new,Y_src,'NumNeighbors',1);
+Y_tar_pseudo = knn_model.predict(X_tar_new);
+acc = length(find(Y_tar_pseudo==Y_tar))/length(Y_tar); 
+fprintf('Acc=%0.4f\n',acc);
 \end{lstlisting}
 
 结果显示如下：
 \begin{lstlisting}
-	Iteration [ 1]:BDA+NN=0.4499
-	Iteration [ 2]:BDA+NN=0.4342
-	Iteration [ 3]:BDA+NN=0.4395
-	Iteration [ 4]:BDA+NN=0.4363
-	Iteration [ 5]:BDA+NN=0.4395
-	Iteration [ 6]:BDA+NN=0.4468
-	Iteration [ 7]:BDA+NN=0.4457
-	Iteration [ 8]:BDA+NN=0.4489
-	Iteration [ 9]:BDA+NN=0.4509
-	Iteration [10]:BDA+NN=0.4551
+	Acc=0.4499
+\end{lstlisting}
+
+\subsubsection{Python}
+
+与Matlab代码类似，我们也可以用Python对TCA进行实现，其主要依赖于Numpy和Scipy两个强大的科学计算库。Python版本的TCA代码如下：
+
+\begin{lstlisting}[title=TCA方法的Matlab实现, frame=shadowbox]
+
+import numpy as np
+import scipy.io
+import scipy.linalg
+import sklearn.metrics
+from sklearn.neighbors import KNeighborsClassifier
+
+
+def kernel(ker, X1, X2, gamma):
+K = None
+if not ker or ker == 'primal':
+K = X1
+elif ker == 'linear':
+if X2 is not None:
+K = sklearn.metrics.pairwise.linear_kernel(np.asarray(X1).T, np.asarray(X2).T)
+else:
+K = sklearn.metrics.pairwise.linear_kernel(np.asarray(X1).T)
+elif ker == 'rbf':
+if X2 is not None:
+K = sklearn.metrics.pairwise.rbf_kernel(np.asarray(X1).T, np.asarray(X2).T, gamma)
+else:
+K = sklearn.metrics.pairwise.rbf_kernel(np.asarray(X1).T, None, gamma)
+return K
+
+
+class TCA:
+def __init__(self, kernel_type='primal', dim=30, lamb=1, gamma=1):
+'''
+Init func
+:param kernel_type: kernel, values: 'primal' | 'linear' | 'rbf'
+:param dim: dimension after transfer
+:param lamb: lambda value in equation
+:param gamma: kernel bandwidth for rbf kernel
+'''
+self.kernel_type = kernel_type
+self.dim = dim
+self.lamb = lamb
+self.gamma = gamma
+
+def fit(self, Xs, Xt):
+'''
+Transform Xs and Xt
+:param Xs: ns * n_feature, source feature
+:param Xt: nt * n_feature, target feature
+:return: Xs_new and Xt_new after TCA
+'''
+X = np.hstack((Xs.T, Xt.T))
+X /= np.linalg.norm(X, axis=0)
+m, n = X.shape
+ns, nt = len(Xs), len(Xt)
+e = np.vstack((1 / ns * np.ones((ns, 1)), -1 / nt * np.ones((nt, 1))))
+M = e * e.T
+M = M / np.linalg.norm(M, 'fro')
+H = np.eye(n) - 1 / n * np.ones((n, n))
+K = kernel(self.kernel_type, X, None, gamma=self.gamma)
+n_eye = m if self.kernel_type == 'primal' else n
+a, b = np.linalg.multi_dot([K, M, K.T]) + self.lamb * np.eye(n_eye), np.linalg.multi_dot([K, H, K.T])
+w, V = scipy.linalg.eig(a, b)
+ind = np.argsort(w)
+A = V[:, ind[:self.dim]]
+Z = np.dot(A.T, K)
+Z /= np.linalg.norm(Z, axis=0)
+Xs_new, Xt_new = Z[:, :ns].T, Z[:, ns:].T
+return Xs_new, Xt_new
+
+def fit_predict(self, Xs, Ys, Xt, Yt):
+'''
+Transform Xs and Xt, then make predictions on target using 1NN
+:param Xs: ns * n_feature, source feature
+:param Ys: ns * 1, source label
+:param Xt: nt * n_feature, target feature
+:param Yt: nt * 1, target label
+:return: Accuracy and predicted_labels on the target domain
+'''
+Xs_new, Xt_new = self.fit(Xs, Xt)
+clf = KNeighborsClassifier(n_neighbors=1)
+clf.fit(Xs_new, Ys.ravel())
+y_pred = clf.predict(Xt_new)
+acc = sklearn.metrics.accuracy_score(Yt, y_pred)
+return acc, y_pred
+
+
+if __name__ == '__main__':
+domains = ['caltech.mat', 'amazon.mat', 'webcam.mat', 'dslr.mat']
+for i in [2]:
+for j in [3]:
+if i != j:
+src, tar = 'data/' + domains[i], 'data/' + domains[j]
+src_domain, tar_domain = scipy.io.loadmat(src), scipy.io.loadmat(tar)
+Xs, Ys, Xt, Yt = src_domain['feas'], src_domain['label'], tar_domain['feas'], tar_domain['label']
+tca = TCA(kernel_type='linear', dim=30, lamb=1, gamma=1)
+acc, ypre = tca.fit_predict(Xs, Ys, Xt, Yt)
+print(acc)
+
 \end{lstlisting}
 
 \textbf{5. 小结}
 
-通过以上过程，我们使用Matlab代码对JDA方法进行了实验，完成了一个迁移学习任务。其他的非深度迁移学习方法，均可以参考上面的过程。值得庆幸的是，许多论文的作者都公布了他们的文章代码，以方便我们进行接下来的研究。读者可以从Github~\footnote{\url{https://github.com/jindongwang/transferlearning/tree/master/code}}或者相关作者的网站上获取其他许多方法的代码。
+通过以上过程，我们分别使用Matlab代码和Python代码对经典的TCA方法进行了实验，完成了一个迁移学习任务。其他的非深度迁移学习方法，均可以参考上面的过程。值得庆幸的是，许多论文的作者都公布了他们的文章代码，以方便我们进行接下来的研究。读者可以从Github~\footnote{\url{https://github.com/jindongwang/transferlearning/tree/master/code}}或者相关作者的网站上获取其他许多方法的代码。
 
 %\subsection{深度网络的finetune}
 %
