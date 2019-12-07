@@ -52,5 +52,5 @@
 |                     $$\mathbf{y}$$ / $$\mathcal{Y}$$                    |       类别向量 / 类别空间       |
 |              $$(n,m)$$ [或 $$(n_1,n_2)$$ 或 $$(n_s,n_t)$$]              |    (源域样本数,目标域样本数)    |
 |                $$P(\mathbf{x}_s)$$ / $$P(\mathbf{x}_t)$$                | 源域数据 / 目标域数据的边缘分布 |
-| $$Q(\mathbf{y}_s | \mathbf{x}_s)$$ / $$Q(\mathbf{y}_t | \mathbf{x}_t)$$ | 源域数据 / 目标域数据的条件分布 |
+| $$Q(\mathbf{y}_s$$ | $$\mathbf{x}_s)$$ / $$Q(\mathbf{y}_t$$ | $$\mathbf{x}_t)$$ | 源域数据 / 目标域数据的条件分布 |
 |                               $$f(\cdot)$$                              |         要学习的目标函数        |
