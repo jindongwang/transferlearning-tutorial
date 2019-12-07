@@ -39,7 +39,6 @@ $$
 DDC方法的损失函数表示为：
 
 $$
-	\label{eq-deep-ddc}
 	\ell = \ell_c(\mathcal{D}_s,\mathbf{y}_s) + \lambda MMD^2(\mathcal{D}_s,\mathcal{D}_t)
 $$
 
@@ -53,7 +52,7 @@ $$
 
 来自清华大学的龙明盛等人在2015年发表在机器学习顶级会议ICML上的DAN方法(Deep Adaptation Networks)([long2015learning](http://www.jmlr.org/proceedings/papers/v37/long15.pdf))对DDC方法进行了几个方面的扩展。首先，有别于DDC方法只加入一个自适应层，DAN方法同时加入了三个自适应层(分类器前三层)。其次，DAN方法采用了表征能力更好的**[多核MMD度量(MK-MMD)](http://papers.nips.cc/paper/4727-optimal-kernel-choice-for-large-scale-two-sample-tests)**代替了DDC方法中的单一核MMD。然后，DAN方法将多核MMD的参数学习融入到深度网络的训练中，不增加网络的额外训练时间。DAN方法在多个任务上都取得了比DDC更好的分类效果。
 
-为什么是适配3层？原来的DDC方法只是适配了一层，现在DAN也基于AlexNet网络，适配最后三层（第6第7第8层）。为什么是这三层？因为在Jason的文章[yosinski2014transferable]((http://papers.nips.cc/paper/5347-how-transferable-are-features-in-deep-n%E2%80%A6))中已经说了，网络的迁移能力在这三层开始就会特别地task-specific，所以要着重适配这三层。至于别的网络（比如GoogLeNet、VGG）等是不是这三层就需要通过自己的实验来推测。DAN只关注使用AlexNet。
+为什么是适配3层？原来的DDC方法只是适配了一层，现在DAN也基于AlexNet网络，适配最后三层（第6第7第8层）。为什么是这三层？因为在Jason的文章[yosinski2014transferable](http://papers.nips.cc/paper/5347-how-transferable-are-features-in-deep-n%E2%80%A6)中已经说了，网络的迁移能力在这三层开始就会特别地task-specific，所以要着重适配这三层。至于别的网络（比如GoogLeNet、VGG）等是不是这三层就需要通过自己的实验来推测。DAN只关注使用AlexNet。
 
 MK-MMD的多核表示形式为
 

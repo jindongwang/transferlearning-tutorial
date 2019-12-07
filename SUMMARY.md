@@ -49,3 +49,11 @@
 * [最简单的深度迁移：预训练与微调](markdown/chap09/chap08_finetune.md)
 * [深度迁移学习方法](markdown/chap09/chap09_deepmethod.md)
 * [深度对抗迁移方法](markdown/chap09/chap09_adversarial.md)
+
+## 第10章 上手实践
+* [上手实践](markdown/chap10/chap10_practice.md)
+* [TCA方法Matlab实现](markdown/chap10/chap10_tcamatlab.md)
+* [TCA方法Python实现](markdown/chap10/chap10_tcapython.md)
+* [预训练finetune实现](markdown/chap10/chap10_finetune.md)
+* [深度迁移学习实现](markdown/chap10/chap10_deep.md)
+* [对抗迁移学习实现](markdown/chap10/chap10_adversarial.md)
