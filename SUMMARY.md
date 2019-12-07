@@ -17,3 +17,7 @@
 
 ## 第3章 迁移学习的应用
 * [迁移学习的应用](markdown/chap03/chap03_application.md)
+
+## 第4章 基础知识
+* [基础知识](markdown/chap04/chap04_basic.md)
+* [迁移学习问题形式化](markdown/chap04/chap04_formulation.md)
