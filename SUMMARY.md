@@ -57,3 +57,14 @@
 * [预训练finetune实现](markdown/chap10/chap10_finetune.md)
 * [深度迁移学习实现](markdown/chap10/chap10_deep.md)
 * [对抗迁移学习实现](markdown/chap10/chap10_adversarial.md)
+
+## 第11章 迁移学习前沿
+* [迁移学习前沿](markdown/chap11/chap11_future.md)
+
+## 第12章 总结
+* [总结](markdown/chap12/chap12_conclusion.md)
+
+## 第13章 附录
+* [附录](markdown/chap13/chap13_appendix.md)
+* [迁移学习著名学者](https://github.com/jindongwang/transferlearning/blob/master/doc/scholar_TL.md)
+* [迁移学习常用数据集和算法](markdown/chap13/chap13_data.md)

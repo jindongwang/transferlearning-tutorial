@@ -10,6 +10,6 @@
 - 深度网络的自适应：[DDC/DCORAL方法的Pytorch代码](https://github.com/jindongwang/transferlearning/tree/master/code/deep/DDC_DeepCoral)
 - 深度对抗网络迁移：[DANN方法](https://github.com/jindongwang/transferlearning/tree/master/code/deep/DANN(RevGrad))
 
-更多深度迁移方法的代码，请见https://github.com/jindongwang/transferlearning/tree/master/code/deep。
+更多深度迁移方法的代码，请见[这里](https://github.com/jindongwang/transferlearning/tree/master/code/deep)。
 
-在众多的非深度迁移学习方法中，我们选择最经典的迁移方法之一、发表于IEEE TNN 2011的[TCA (Transfer Component Analysis)](https://ieeexplore.ieee.org/abstract/document/5640675/)方法进行实践。为了便于学习，我们同时用Matlab和Python实现了此代码。代码的链接为https://github.com/jindongwang/transferlearning/tree/master/code/traditional/TCA。下面我们对代码进行简单讲解。
+在众多的非深度迁移学习方法中，我们选择最经典的迁移方法之一、发表于IEEE TNN 2011的[TCA (Transfer Component Analysis)](https://ieeexplore.ieee.org/abstract/document/5640675/)方法进行实践。为了便于学习，我们同时用Matlab和Python实现了此代码。代码的链接在[这里](https://github.com/jindongwang/transferlearning/tree/master/code/traditional/TCA)。下面我们对代码进行简单讲解。
