@@ -12,3 +12,5 @@
 * [与已有概念的区别和联系](qian-yi-xue-xi-ji-ben-gai-nian/chap01_tlvsml.md)
 * [负迁移](qian-yi-xue-xi-ji-ben-gai-nian/chap01_negativetransfer.md)
 
+## 迁移学习研究领域
+* [迁移学习研究领域](chap02/chap02_research_area.md)
