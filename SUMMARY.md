@@ -24,3 +24,6 @@
 * [总体思路](markdown/chap04/chap04_overview.md)
 * [度量准则](markdown/chap04/chap04_metric.md)
 * [理论知识](markdown/chap04/chap04_theory.md)
+
+## 第5章 迁移学习基本方法
+* [迁移学习基本方法](markdown/chap05/chap05_method.md)
