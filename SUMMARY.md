@@ -27,3 +27,10 @@
 
 ## 第5章 迁移学习基本方法
 * [迁移学习基本方法](markdown/chap05/chap05_method.md)
+
+## 第6章 数据分布自适应方法
+* [总体思路](markdown/chap06/chap06_distribution.md)
+* [边缘分布自适应](markdown/chap06/chap06_marginal.md)
+* [条件分布自适应](markdown/chap06/chap06_conditional.md)
+* [联合分布自适应](markdown/chap06/chap06_joint.md)\
+* [动态分布自适应](markdown/chap06/chap06_dynamic.md)

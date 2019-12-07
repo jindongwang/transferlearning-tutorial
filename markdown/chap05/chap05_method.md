@@ -15,7 +15,7 @@
 特别地，上海交通大学Dai等人提出了TrAdaboost方法，将AdaBoost的思想应用于迁移学习中，提高有利于目标分类任务的实例权重、降低
 不利于目标分类任务的实例权重，并基于PAC理论推导了模型的泛化误差上界。TrAdaBoost方法是此方面的经典研究之一。文献[huang2007correcting](http://papers.nips.cc/paper/3075-correcting-sample-selection-bias-by-unlabeled-data.pdf)提出核均值匹配方法(Kernel Mean Matching, KMM)对于概率分布进行估计，目标是使得加权后的源域和目标域的概率分布尽可能相近。
 
-在最新的研究成果中，香港科技大学的Tan等人扩展了实例迁移学习方法的应用场景，提出了传递迁移学习方法(Transitive Transfer Learning, TTL, [tan2015transitive](https://dl.acm.org/citation.cfm?id=2783295))和远域迁移学习(Distant Domain Transfer Learning, DDTL) [tan2015transitive](https://dl.acm.org/citation.cfm?id=2783295)，利用联合矩阵分解和深度神经网络，将迁移学习应用于多个不相似的领域之间的知识共享，取得了良好的效果。
+在最新的研究成果中，香港科技大学的Tan等人扩展了实例迁移学习方法的应用场景，提出了传递迁移学习方法(Transitive Transfer Learning, TTL, [tan2015transitive](https://dl.acm.org/citation.cfm?id=2783295))和远域迁移学习(Distant Domain Transfer Learning, DDTL) [tan2017distant](https://www.aaai.org/ocs/index.php/AAAI/AAAI17/paper/viewPaper/14446)，利用联合矩阵分解和深度神经网络，将迁移学习应用于多个不相似的领域之间的知识共享，取得了良好的效果。
 
 虽然实例权重法具有较好的理论支撑、容易推导泛化误差上界，但这类方法通常只在领域间分布差异较小时有效，因此对自然语言处理、计算机视觉等任务效果并不理想。而基于特征表示的迁移学习方法效果更好，是我们研究的重点。
 
