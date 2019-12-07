@@ -42,3 +42,10 @@
 * [子空间学习法](markdown/chap08/chap08_subspace.md)
 * [统计特征对齐](markdown/chap08/chap08_statistics.md)
 * [流形学习](markdown/chap08/chap08_manifold.md)
+
+## 第9章 深度迁移学习
+* [深度迁移学习](markdown/chap09/chap09_deep.md)
+* [深度网络的可迁移性](markdown/chap09/chap09_deeptransfer.md)
+* [最简单的深度迁移：预训练与微调](markdown/chap09/chap08_finetune.md)
+* [深度迁移学习方法](markdown/chap09/chap08_deepmethod.md)
+* [深度对抗迁移方法](markdown/chap09/chap08_adversarial.md)
