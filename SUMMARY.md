@@ -14,3 +14,6 @@
 
 ## 第2章 迁移学习研究领域
 * [迁移学习研究领域](markdown/chap02/chap02_research_area.md)
+
+## 第3章 迁移学习的应用
+* [迁移学习的应用](markdown/chap03/chap03_application.md)
