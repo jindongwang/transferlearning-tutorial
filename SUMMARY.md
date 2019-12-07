@@ -5,7 +5,7 @@
 * [致谢](zhi-xie.md)
 * [手册说明](shou-ce-shuo-ming.md)
 
-## 第2章 迁移学习基本概念
+## 第1章 迁移学习基本概念
 
 * [迁移学习基本概念](qian-yi-xue-xi-ji-ben-gai-nian/chap01_introduction.md)
 * [为什么需要迁移学习](qian-yi-xue-xi-ji-ben-gai-nian/chap01_whytransfer.md)
