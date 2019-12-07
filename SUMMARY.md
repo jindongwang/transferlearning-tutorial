@@ -1,6 +1,6 @@
 # Table of contents
 
-* [README](README.md)
+* [迁移学习简明手册](markdown/index.md)
 * [写在前面](xie-zai-qian-mian.md)
 * [致谢](zhi-xie.md)
 * [手册说明](shou-ce-shuo-ming.md)

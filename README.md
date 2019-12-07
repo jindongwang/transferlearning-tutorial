@@ -8,7 +8,11 @@
 
 ## New: I've put the LaTex src code on Overleaf, where editing and previewing will be much easier!
 
+## New: I also put the book on GitBook, where everyone can easily see it and modify it.
+
 [**Overleaf address**](https://www.overleaf.com/read/gytccgktstsy)
+
+[**GitBook address**](https://jindongwang.gitbook.io/transfer-learning-tutorial/)
 
 ## I'm considering a big update to this tutorial later this year. If you are interested, please feel free to contact me!
 
@@ -53,9 +57,7 @@ Jindong Wang et al. Transfer Learning Tutorial. 2018.
 
 #### 在线编译 \(推荐\)
 
-[**Overleaf address**](https://www.overleaf.com/read/gytccgktstsy)
-
-在线查看，有修改需求请在overleaf上提交request。
+直接通过pull request的方式在`markdown`文件夹中修改。修改通过后，GitBook会自动更新。
 
 #### 本地编译方式
 
