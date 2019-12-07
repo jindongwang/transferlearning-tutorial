@@ -6,12 +6,16 @@
 
 这是《迁移学习简明手册》的LaTex源码。欢迎有兴趣的学者一起来贡献维护。
 
+## New: I've put the LaTex src code on Overleaf, where editing and previewing will be much easier!
+
+**[Overleaf address](https://www.overleaf.com/read/gytccgktstsy)**
+
 ## I'm considering a big update to this tutorial later this year. If you are interested, please feel free to contact me!
 
 ### 下载
 
+
 * V1.1版本: [地址1](http://jd92.wang/assets/files/transfer_learning_tutorial_wjd.pdf) [地址2](https://github.com/jindongwang/transferlearning-tutorial/releases)
-* 开发版：[地址](https://www.jianguoyun.com/p/DSI5P2YQjKnsBRiU_0w)
 * [手册网站与勘误表](http://t.cn/RmasEFe)
 
 ### 意见与建议
@@ -48,7 +52,13 @@ Jindong Wang et al. Transfer Learning Tutorial. 2018.
 
 以下部分为参与贡献的详细说明。
 
-#### 编译方式
+#### 在线编译 (推荐)
+
+**[Overleaf address](https://www.overleaf.com/read/gytccgktstsy)**
+
+在线查看，有修改需求请在overleaf上提交request。
+
+#### 本地编译方式
 
 * 在任何装有较新版TexLive的电脑上，首先选择`xelatex`引擎进行第一次编译
 * 再选择`BibTeX`编译一次生成参考文献
