@@ -37,3 +37,8 @@
 
 ## 第7章 特征选择法
 * [特征选择法](markdown/chap07/chap07_featureselect.md)
+
+## 第8章 子空间学习法
+* [子空间学习法](markdown/chap08/chap08_subspace.md)
+* [统计特征对齐](markdown/chap08/chap08_statistics.md)
+* [流形学习](markdown/chap08/chap08_manifold.md)
