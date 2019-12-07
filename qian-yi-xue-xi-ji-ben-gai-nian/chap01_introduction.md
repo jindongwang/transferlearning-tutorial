@@ -30,10 +30,11 @@
 
 下图简要表示了一个迁移学习过程。
 
-![图1](https://raw.githubusercontent.com/jindongwang/transferlearning-tutorial/master/src/figures/png/fig-introduction-transfer.png)
+![&#x56FE;1](https://raw.githubusercontent.com/jindongwang/transferlearning-tutorial/master/src/figures/png/fig-introduction-transfer.png)
 
 下图展示了生活中常见的迁移学习的例子。
 
 ![](https://raw.githubusercontent.com/jindongwang/transferlearning-tutorial/master/src/figures/png/fig-introduction-example.png)
 
 值得一提的是，[新华社报道](https://mp.weixin.qq.com/s?__biz=MjM5ODYzNzAyMQ==&mid=2651933920&idx=1\&sn=ae2866bd12000f1644eae1094497837e)指出，迁移学习是中国领先于世界的少数几个人工智能领域之一。中国的人工智能赶超的机会来了！
+

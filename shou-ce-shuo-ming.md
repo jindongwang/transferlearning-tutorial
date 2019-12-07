@@ -2,7 +2,7 @@
 
 本手册的编写目的是帮助迁移学习领域的初学者快速进行入门。我们尽可能绕开那些非常理论的概念，只讲经验方法。我们还配有多方面的代码、数据、论文资料，最大限度地方便初学者。
 
-本手册的方法部分，关注点是近年来持续走热的领域自适应(Domain Adaptation)问题。迁移学习还有其他众多的研究领域。由于作者研究兴趣所在和能力所限，对其他部分的研究只是粗略介绍。非常欢迎从事其他领域研究的读者提供内容。
+本手册的方法部分，关注点是近年来持续走热的领域自适应\(Domain Adaptation\)问题。迁移学习还有其他众多的研究领域。由于作者研究兴趣所在和能力所限，对其他部分的研究只是粗略介绍。非常欢迎从事其他领域研究的读者提供内容。
 
 本手册的每一章节都是**自包含**的，因此，初学者不必从头开始阅读每一部分。直接阅读自己需要的或者自己感兴趣的部分即可。本手册每一章节的信息如下：
 
@@ -28,22 +28,20 @@
 
 第13章是附录，提供了迁移学习领域相关的学习资源，以供读者参考。
 
-- - -
-  
-  
 由于作者水平有限，不足和错误之处，敬请不吝批评指正。
 
 手册的相关资源：
 
-我们在Github上持续维护了迁移学习的资源仓库，包括论文、代码、文档、比赛等，请读者持续关注：https://github.com/jindongwang/transferlearning，配合本手册更香哦！
+我们在Github上持续维护了迁移学习的资源仓库，包括论文、代码、文档、比赛等，请读者持续关注：[https://github.com/jindongwang/transferlearning，配合本手册更香哦！](https://github.com/jindongwang/transferlearning，配合本手册更香哦！)
 
-网站(内含勘误表)：http://t.cn/RmasEFe
+网站\(内含勘误表\)：[http://t.cn/RmasEFe](http://t.cn/RmasEFe)
 
-开发维护地址： http://github.com/jindongwang/transferlearning-tutorial
+开发维护地址： [http://github.com/jindongwang/transferlearning-tutorial](http://github.com/jindongwang/transferlearning-tutorial)
 
 作者的联系方式：
 
-- 邮箱: jindongwang@outlook.com
-- 知乎: 王晋东不在家
-- 微博: 秦汉日记
-- 个人网站: http://jd92.wang。
+* 邮箱: jindongwang@outlook.com
+* 知乎: 王晋东不在家
+* 微博: 秦汉日记
+* 个人网站: [http://jd92.wang。](http://jd92.wang。)
+

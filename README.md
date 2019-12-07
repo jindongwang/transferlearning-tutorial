@@ -8,12 +8,11 @@
 
 ## New: I've put the LaTex src code on Overleaf, where editing and previewing will be much easier!
 
-**[Overleaf address](https://www.overleaf.com/read/gytccgktstsy)**
+[**Overleaf address**](https://www.overleaf.com/read/gytccgktstsy)
 
 ## I'm considering a big update to this tutorial later this year. If you are interested, please feel free to contact me!
 
 ### 下载
-
 
 * V1.1版本: [地址1](http://jd92.wang/assets/files/transfer_learning_tutorial_wjd.pdf) [地址2](https://github.com/jindongwang/transferlearning-tutorial/releases)
 * [手册网站与勘误表](http://t.cn/RmasEFe)
@@ -52,9 +51,9 @@ Jindong Wang et al. Transfer Learning Tutorial. 2018.
 
 以下部分为参与贡献的详细说明。
 
-#### 在线编译 (推荐)
+#### 在线编译 \(推荐\)
 
-**[Overleaf address](https://www.overleaf.com/read/gytccgktstsy)**
+[**Overleaf address**](https://www.overleaf.com/read/gytccgktstsy)
 
 在线查看，有修改需求请在overleaf上提交request。
 
