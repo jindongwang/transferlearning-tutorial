@@ -29,7 +29,7 @@ BDA方法是首次给出边缘分布和条件分布的定量估计。然而，�
 
 然而，尽管上述两种估计方案有一定的可行性，它们均需要大量的重复计算，给普适计算设备带来了严峻的挑战。另外，上述结果并不具有可解释性，其正确性也无法得到保证。
 
-作者提出的动态迁移方法是首次对$$\mu$$值进行精确的定量估计方法。该方法利用领域的整体和局部性质来定量计算$$\mu$$(计算出的值用$$\hat{\mu}$$来表示）。采用$$\mathcal{A}-distance$$~\cite{ben2007analysis}作为基本的度量方式。$$\mathcal{A}-distance$$被定义为建立一个二分类器进行两个不同领域的分类得出的误差。从形式化来看，定义$$\epsilon(h)$$作为线性分类器$$h$$区分两个领域$$\Omega_s$$和$$\Omega_t$$的误差。则，$$\mathcal{A}-distance$$可以被定义为：
+作者提出的动态迁移方法是首次对$$\mu$$值进行精确的定量估计方法。该方法利用领域的整体和局部性质来定量计算$$\mu$$(计算出的值用$$\hat{\mu}$$来表示）。采用$$\mathcal{A}-distance$$作为基本的度量方式。$$\mathcal{A}-distance$$被定义为建立一个二分类器进行两个不同领域的分类得出的误差。从形式化来看，定义$$\epsilon(h)$$作为线性分类器$$h$$区分两个领域$$\Omega_s$$和$$\Omega_t$$的误差。则，$$\mathcal{A}-distance$$可以被定义为：
 $$
 d_A(\Omega_s,\Omega_t) = 2(1 - 2 \epsilon(h)).
 $$
@@ -53,7 +53,7 @@ $$
 $$
 f = \mathop{\arg\min}_{f \in \sum_{i=1}^{n} \mathcal{H}_{K}} J(f(g(\mathbf{x}_i)),y_i) + \eta ||f||^2_K + \lambda \overline{D_f}(\Omega_s,\Omega_t) + \rho R_f(\Omega_s,\Omega_t),
 $$
-其中$$||f||^2_K$$是$$f$$的平方标准形式。$$\overline{D_f}(\cdot,\cdot)$$这一项表示本章提出的动态迁移学习。引入拉普拉斯约束作为$$f$$的额外正则项~\cite{belkin2006manifold}。$$\eta,\lambda$$,和$$\rho$$是对应的正则项系数。
+其中$$||f||^2_K$$是$$f$$的平方标准形式。$$\overline{D_f}(\cdot,\cdot)$$这一项表示本章提出的动态迁移学习。引入拉普拉斯约束作为$$f$$的额外正则项[belkin2006manifold](http://www.jmlr.org/papers/v7/belkin06a.html)。$$\eta,\lambda$$,和$$\rho$$是对应的正则项系数。
 
 上式则为通用的一个迁移学习框架，可以适用于任何问题。为了对此框架进行学习，作者分别提出了[基于流形学习的动态迁移方法MEDA (Manifold Embedded Distribution Alignment)](https://dl.acm.org/citation.cfm?id=3240512)和[基于深度学习的动态迁移方法DDAN (Deep Dynamic Adaptation Network)](https://arxiv.org/abs/1909.08184)来进行学习。这两种方法分别如下图所示。
 

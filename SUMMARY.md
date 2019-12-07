@@ -32,5 +32,8 @@
 * [总体思路](markdown/chap06/chap06_distribution.md)
 * [边缘分布自适应](markdown/chap06/chap06_marginal.md)
 * [条件分布自适应](markdown/chap06/chap06_conditional.md)
-* [联合分布自适应](markdown/chap06/chap06_joint.md)\
+* [联合分布自适应](markdown/chap06/chap06_joint.md)
 * [动态分布自适应](markdown/chap06/chap06_dynamic.md)
+
+## 第7章 特征选择法
+* [特征选择法](markdown/chap07/chap07_featureselect.md)
