@@ -159,7 +159,7 @@ $$
 
 ### Wasserstein Distance
 
-Wasserstein Distance是一套用来衡量两个概率分部之间距离的度量方法。该距离在一个度量空间$$(M,\rho)$$上定义，其中$$\rho(x,y)$$表示集合$$M$$中两个实例$$x$$和$$y$$的距离函数，比如欧几里得距离。两个概率分布$$\mathbb{P}$$和$$\mathbb{Q}$$之间的$$p{\text{-th}}$$ Wasserstein distance可以被定义为
+Wasserstein Distance是一套用来衡量两个概率分布之间距离的度量方法。该距离在一个度量空间$$(M,\rho)$$上定义，其中$$\rho(x,y)$$表示集合$$M$$中两个实例$$x$$和$$y$$的距离函数，比如欧几里得距离。两个概率分布$$\mathbb{P}$$和$$\mathbb{Q}$$之间的$$p{\text{-th}}$$ Wasserstein distance可以被定义为
 
 $$
 W_p(\mathbb{P}, \mathbb{Q}) = \Big(\inf_{\mu \in \Gamma(\mathbb{P}, \mathbb{Q}) } \int \rho(x,y)^p d\mu(x,y) \Big)^{1/p},
