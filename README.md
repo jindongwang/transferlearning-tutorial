@@ -19,7 +19,7 @@
 ### 下载
 
 * V1.1版本: [地址1](http://jd92.wang/assets/files/transfer_learning_tutorial_wjd.pdf) [地址2](https://github.com/jindongwang/transferlearning-tutorial/releases)
-* [手册网站与勘误表](http://t.cn/RmasEFe)
+* [手册网站与勘误表](http://htmlpreview.github.io/?https://github.com/jindongwang/transferlearning-tutorial/blob/master/web/transfer_tutorial.html)
 
 ### 意见与建议
 
