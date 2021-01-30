@@ -1,6 +1,4 @@
-# README
-
-## 《迁移学习简明手册》
+#《迁移学习简明手册》
 
 [![MIT License](https://img.shields.io/badge/license-MIT-green.svg)](https://opensource.org/licenses/MIT) [![GitHub release](https://img.shields.io/badge/Github-V1.0-519dd9.svg)](https://github.com/jindongwang/transferlearning-tutorial) [![GitHub commits](https://img.shields.io/badge/commits-1-519dd9.svg)](https://github.com/jindongwang/transferlearning-tutorial/issues) ![](https://img.shields.io/badge/language-Tex-orange.svg)
 
