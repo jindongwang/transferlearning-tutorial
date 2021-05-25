@@ -1,0 +1,129 @@
+<html>
+	<head>
+		<title>迁移学习简明手册</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1"/>
+		<link rel="stylesheet" type="text/css" href="assets/css/main.css">
+		<script type="text/javascript" src="assets/js/jquery.min.js"></script>
+		<script>
+			var _hmt = _hmt || [];
+			(function() {
+  				var hm = document.createElement("script");
+  				hm.src = "//hm.baidu.com/hm.js?90fe5fbc8049531b9c04e47592d7c208";
+  				var s = document.getElementsByTagName("script")[0]; 
+  				s.parentNode.insertBefore(hm, s);
+			})();
+		</script>
+		
+	</head>
+	<body>
+
+		<span style="font-size: 26;text-align: center;">迁移学习简明手册</span>
+
+		<br/>
+		<br/>
+
+		<div id="secresearch" class="sectiontitle">
+			摘要
+			<hr/>
+			<div id="research" class="sectioncontent">
+				迁移学习作为机器学习的一大分支，已经取得了长足的进步。本手册简明地介绍迁移学习的概念与基本方法，并对其中的领域自适应问题中的若干代表性方法进行讲述。最后简要探讨迁移学习未来可能的方向。本手册编写的目的是帮助迁移学习领域的初学者快速入门并掌握基本方法，为自己的研究和应用工作打下良好基础。<br/>
+本手册的编写逻辑很简单：是什么——介绍迁移学习；为什么——为什么要用迁移学习、为什么能用；怎么办——如何进行迁移 (迁移学习方法)。其中，是什么和为什么解决概念问题，这是一切的前提；怎么办是我们的重点，也占据了最多的篇幅。为了最大限度地方便初学者，我们还特别编写了一章上手实践，直接分享实现代码和心得体会。
+			</div>
+		</div>
+		<br/>
+
+		<div id="secresearch" class="sectiontitle">
+			写在前面
+			<hr/>
+			<div id="research" class="sectioncontent">
+				一直以来都有这样的愿望：无论学习什么知识，总是希望可以快速准确地找到对应的有价值资源进行学习。我相信我们每个人都梦寐以求。然而，越来越多的学科，尤其是我目前从事的计算机科学、人工智能领域，当下正在飞速地发展着。太多的新知识都难以事半功倍地找到快速入手的教程。庄子曰： “吾生也有涯，而知也无涯。以有涯随无涯，殆已。”<br/>
+
+我只是迁移学习领域一个很普通的博士生，也同样经历了由“一问三不知”到“稍稍理解”的艰难过程。我在 2016 年初入门迁移学习之时，迁移学习这个概念还未曾像今天一样炙手可热。当时所能找到的学习资源只有两种：别人已发表的论文和已做过的演讲。这些还是不够简单、不够直观。我需要从如此众多的材料中不断归纳，才能站在博士研究的那个圈子的边缘，以便将来可以做出一点点贡献，往圆圈外突破一点点。<br/>
+
+相信不只是我，任何一个刚刚入门的学习者都会经历此过程。<br/>
+
+“沉舟侧畔千帆过，病树前头万木春。”<br/>
+
+已所不欲，勿施于人。正是因为我在初学之时也经历过如此沮丧的时期，我才在 Github上对迁移学习进行了整理归纳，在知乎网上以“王晋东不在家”为名分享自己对于迁移学习和机器学习的理解和教训、在线上线下与大家讨论相关的问题。很欣慰的是，这些免费开放的资源或多或少地，帮助到了一些初学者，使他们更快速地步入迁移学习之门。<br/>
+
+但这些还是不太够。 Github 上的资源模式已经固定，目前主要是进行日常更新，不断加入新的论文和代码。目前还是缺乏一个人人都能上手的初学者教程。也不只一次，有读者提问有没有相关的入门教程，能真正从0到1帮助初学者进行入门。<br/>
+
+最近，南京大学博士(现任旷视科技南京研究院负责人)魏秀参学长写了一本《解析卷积神经网络—深度学习实践手册》，给很多深度学习的初学者提供了帮助。受他的启发，我也决定将自己在迁移学习领域的一些学习心得体会整理成一本手册，免费进行分享。希望能借此方式，帮助更多的初学者。 我们不谈风月，只谈干货。<br/>
+
+我不是大佬，我也是迁移学习路上的一名小学生。迁移学习领域比我做的好的同龄人太多了。因此，不敢谈什么指导。所有的目的都仅为分享。<br/>
+
+本手册在互联网上免费开放。随着作者理解的深入 (以及其他有意者的增补)，本手册肯定会不断修改、越来越好。因此，我打算效仿软件的开发、采取版本更新的方式进行管理。<br/>
+
+希望未来可以有更多的有志之士加入，让我们的教程日渐丰富。
+			</div>
+		</div>
+		<br/>
+
+		<div id="secresearch" class="sectiontitle">
+			下载与维护地址
+			<hr/>
+			<div id="research" class="sectioncontent">
+				当前版本：[<a href="http://jd92.wang/assets/files/transfer_learning_tutorial_wjd.pdf">V1.1</a>] (2019年10月)<br/>
+				开发版本：[<a href="https://github.com/jindongwang/transferlearning-tutorial">Github</a>] (欢迎参与贡献!)<br/>
+				贡献者：<a href="https://github.com/jindongwang">jindongwang</a>, <a href="https://github.com/tommyjiang">tommyyjiang</a>, <a href="https://github.com/JsonAC">JaonAC</a>, <a href="https://github.com/Godblesswz">Godblesswz</a>
+			</div>
+		</div>
+		<br/>
+
+		<div id="secresearch" class="sectiontitle">
+			勘误表
+			<hr/>
+			<div id="research" class="sectioncontent">
+				<ol>
+					<li>
+						4.1.1节最后一段最后一句话：“... 却并给出(也难以给出)P 的具体形式。” 应为： “... 却并未给出(也难以给出)P的具体形式。”  
+					</li>
+					<li>
+						TCA的介绍中“TCA假设存在一个特征映射$\phi$，使得映射后数据的分布$P(\phi(\mathbf{x}_s)) \approx P(\phi(\mathbf{x}_s))$” 这里的公式应改为 “$P(\phi(\mathbf{x}_s)) \approx P(\phi(\mathbf{x}_t))$”
+					</li>
+
+					<li>
+						图27名称应为”DeepCORAL方法示意图“
+					</li>
+
+					<li>
+						公式6.18(JDA)的统一优化目标的分子项应该和6.17一样，原版本印刷错误
+					</li>
+
+					<li>
+						人脸识别图像数据集这一小节中 “...按照不同的关照和曝光条件随机选出。“ 改为 “...光照和曝光条件...” 
+					</li>
+					<li>
+						9.3.3小节中“其核心在于，找到网络需要进行自适应层，并且对这些导加上自适应的损失度量” 改为 “其核心在于，找到网络需要进行自适应层，并且对这些层加上自适应的损失度量”
+					</li>
+						
+					<li>
+						公式4.19第二个指示函数中是否应该是η(xi)=1而不是η(xi)=0
+					</li>
+
+					<li>
+						删除第14页余弦相似度引用文章。
+					</li>
+
+					<li>
+						第11章终身迁移学习中，试验2000种灯泡材料，不是爱因斯坦说的，是爱迪生说的。
+					</li>
+
+					<li>
+						第14页，公式4.3。闵可夫斯基距离公式应是范数||·||表示才对。
+					</li>
+				</ol>
+			</div>
+		</div>
+		<br/>
+
+		<footer style="text-align: center;">
+			
+			 ©2019.
+			<!-- Start of StatCounter Code for Default Guide -->
+
+<!-- End of StatCounter Code for Default Guide -->
+		</footer>
+	</body>
+</html>
