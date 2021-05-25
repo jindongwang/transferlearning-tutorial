@@ -4,6 +4,12 @@
 
 这是《迁移学习简明手册》的LaTex源码。欢迎有兴趣的学者一起来贡献维护。
 
+## New: The new book has been released! [Zhihu](https://zhuanlan.zhihu.com/p/374927278) 
+
+![WechatIMG221](https://user-images.githubusercontent.com/6158206/119510347-06b8e980-bda4-11eb-822c-4073704c7dc5.jpeg)
+
+This open-source version will be here forever.
+
 ## New: I've put the LaTex src code on Overleaf, where editing and previewing will be much easier!
 
 ## New: I also put the book on GitBook, where everyone can easily see it and modify it.
