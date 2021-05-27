@@ -8,22 +8,7 @@
 
 ![WechatIMG221](https://user-images.githubusercontent.com/6158206/119510347-06b8e980-bda4-11eb-822c-4073704c7dc5.jpeg)
 
-This open-source version will be here forever.
-
-## New: I've put the LaTex src code on Overleaf, where editing and previewing will be much easier!
-
-## New: I also put the book on GitBook, where everyone can easily see it and modify it.
-
-[**Overleaf address**](https://www.overleaf.com/read/gytccgktstsy)
-
-[**GitBook address**](https://jindongwang.gitbook.io/transfer-learning-tutorial/)
-
-## I'm considering a big update to this tutorial later this year. If you are interested, please feel free to contact me!
-
-### 下载
-
-* V1.1版本: [地址1](http://jd92.wang/assets/files/transfer_learning_tutorial_wjd.pdf) [地址2](https://github.com/jindongwang/transferlearning-tutorial/releases)
-* [手册网站与勘误表](http://htmlpreview.github.io/?https://github.com/jindongwang/transferlearning-tutorial/blob/master/web/transfer_tutorial.html)
+This open-source version will be here forever. But this is significantly different from the book. So if you like it, you can buy the book.
 
 ### 意见与建议
 
