@@ -10,6 +10,9 @@
 
 This open-source version will be here forever. But this is significantly different from the book. So if you like it, you can buy the book.
 
+
+## The following are deprecated.
+
 ### 意见与建议
 
 对于不足和错误之处，以及新的意见，欢迎到[这里](https://github.com/jindongwang/transferlearning-tutorial/issues/6)留言！
