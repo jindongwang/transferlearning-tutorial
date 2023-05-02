@@ -4,9 +4,11 @@
 
 这是《迁移学习简明手册》的LaTex源码。欢迎有兴趣的学者一起来贡献维护。
 
-## New: The new book has been released! [Zhihu](https://zhuanlan.zhihu.com/p/374927278) 
+## News
 
-![WechatIMG221](https://user-images.githubusercontent.com/6158206/119510347-06b8e980-bda4-11eb-822c-4073704c7dc5.jpeg)
+This repo is not maintained anymore since our latest efforts have been organized into a book called Introduction to Transfer learning, both has [English](https://link.springer.com/book/9789811975837) version and [Chinese](https://zhuanlan.zhihu.com/p/374927278) version. The homepage for the book is: https://jd92.wang/tlbook/.
+
+![image](https://user-images.githubusercontent.com/6158206/235565755-795dc6f2-4520-4bdc-8793-24aea38c93a6.png)
 
 This open-source version will be here forever. But this is significantly different from the book. So if you like it, you can buy the book.
 
